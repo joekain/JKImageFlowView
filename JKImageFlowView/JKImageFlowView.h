@@ -45,6 +45,7 @@
 
 - (id)initWithFrame:(NSRect)frameRect;
 - (void)reloadData;
+- (void)setFrame:(NSRect)frameRect;
 @property (retain) id dataSource;
 
 @end

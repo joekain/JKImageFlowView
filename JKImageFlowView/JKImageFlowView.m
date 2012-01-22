@@ -60,6 +60,11 @@
     }
     return self;
 }
+- (void)setFrame:(NSRect)frameRect
+{
+    [super setFrame:frameRect];
+    [qcview setFrame:frameRect];
+}
 
 - (void)reloadData
 {
