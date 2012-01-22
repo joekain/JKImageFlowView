@@ -19,6 +19,18 @@
 		9C49561214CBDDB5005597F0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C49561014CBDDB5005597F0 /* MainMenu.xib */; };
 		9C49561614CBDDBD005597F0 /* JKImageFlowView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4955DE14CBDD0D005597F0 /* JKImageFlowView.framework */; };
 		9C49561814CBE0F5005597F0 /* JKImageFlowView.qtz in Resources */ = {isa = PBXBuildFile; fileRef = 9C49561714CBE0F5005597F0 /* JKImageFlowView.qtz */; };
+		9CFE960414CC194500EB570C /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CFE95F814CC194500EB570C /* 1.jpg */; };
+		9CFE960514CC194500EB570C /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CFE95F914CC194500EB570C /* 3.jpg */; };
+		9CFE960614CC194500EB570C /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CFE95FA14CC194500EB570C /* 4.jpg */; };
+		9CFE960714CC194500EB570C /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CFE95FB14CC194500EB570C /* 5.jpg */; };
+		9CFE960814CC194500EB570C /* 6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CFE95FC14CC194500EB570C /* 6.jpg */; };
+		9CFE960914CC194500EB570C /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CFE95FD14CC194500EB570C /* 7.jpg */; };
+		9CFE960A14CC194500EB570C /* 9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CFE95FE14CC194500EB570C /* 9.jpg */; };
+		9CFE960B14CC194500EB570C /* 11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CFE95FF14CC194500EB570C /* 11.jpg */; };
+		9CFE960C14CC194500EB570C /* 12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CFE960014CC194500EB570C /* 12.jpg */; };
+		9CFE960D14CC194500EB570C /* 13.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CFE960114CC194500EB570C /* 13.jpg */; };
+		9CFE960E14CC194500EB570C /* 14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CFE960214CC194500EB570C /* 14.jpg */; };
+		9CFE960F14CC194500EB570C /* 15.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CFE960314CC194500EB570C /* 15.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +65,18 @@
 		9C49560E14CBDDB5005597F0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9C49561114CBDDB5005597F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		9C49561714CBE0F5005597F0 /* JKImageFlowView.qtz */ = {isa = PBXFileReference; lastKnownFileType = "video.quartz-composer"; path = JKImageFlowView.qtz; sourceTree = SOURCE_ROOT; };
+		9CFE95F814CC194500EB570C /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		9CFE95F914CC194500EB570C /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		9CFE95FA14CC194500EB570C /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
+		9CFE95FB14CC194500EB570C /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpg; sourceTree = "<group>"; };
+		9CFE95FC14CC194500EB570C /* 6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 6.jpg; sourceTree = "<group>"; };
+		9CFE95FD14CC194500EB570C /* 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.jpg; sourceTree = "<group>"; };
+		9CFE95FE14CC194500EB570C /* 9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9.jpg; sourceTree = "<group>"; };
+		9CFE95FF14CC194500EB570C /* 11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11.jpg; sourceTree = "<group>"; };
+		9CFE960014CC194500EB570C /* 12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 12.jpg; sourceTree = "<group>"; };
+		9CFE960114CC194500EB570C /* 13.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 13.jpg; sourceTree = "<group>"; };
+		9CFE960214CC194500EB570C /* 14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 14.jpg; sourceTree = "<group>"; };
+		9CFE960314CC194500EB570C /* 15.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 15.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +175,7 @@
 		9C49560214CBDDB5005597F0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9CFE95F714CC192600EB570C /* images */,
 				9C49560314CBDDB5005597F0 /* JKImageFlowViewTest-Info.plist */,
 				9C49560414CBDDB5005597F0 /* InfoPlist.strings */,
 				9C49560714CBDDB5005597F0 /* main.m */,
@@ -158,6 +183,26 @@
 				9C49560A14CBDDB5005597F0 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9CFE95F714CC192600EB570C /* images */ = {
+			isa = PBXGroup;
+			children = (
+				9CFE95F814CC194500EB570C /* 1.jpg */,
+				9CFE95F914CC194500EB570C /* 3.jpg */,
+				9CFE95FA14CC194500EB570C /* 4.jpg */,
+				9CFE95FB14CC194500EB570C /* 5.jpg */,
+				9CFE95FC14CC194500EB570C /* 6.jpg */,
+				9CFE95FD14CC194500EB570C /* 7.jpg */,
+				9CFE95FE14CC194500EB570C /* 9.jpg */,
+				9CFE95FF14CC194500EB570C /* 11.jpg */,
+				9CFE960014CC194500EB570C /* 12.jpg */,
+				9CFE960114CC194500EB570C /* 13.jpg */,
+				9CFE960214CC194500EB570C /* 14.jpg */,
+				9CFE960314CC194500EB570C /* 15.jpg */,
+			);
+			name = images;
+			path = ../images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +298,18 @@
 				9C49560614CBDDB5005597F0 /* InfoPlist.strings in Resources */,
 				9C49560C14CBDDB5005597F0 /* Credits.rtf in Resources */,
 				9C49561214CBDDB5005597F0 /* MainMenu.xib in Resources */,
+				9CFE960414CC194500EB570C /* 1.jpg in Resources */,
+				9CFE960514CC194500EB570C /* 3.jpg in Resources */,
+				9CFE960614CC194500EB570C /* 4.jpg in Resources */,
+				9CFE960714CC194500EB570C /* 5.jpg in Resources */,
+				9CFE960814CC194500EB570C /* 6.jpg in Resources */,
+				9CFE960914CC194500EB570C /* 7.jpg in Resources */,
+				9CFE960A14CC194500EB570C /* 9.jpg in Resources */,
+				9CFE960B14CC194500EB570C /* 11.jpg in Resources */,
+				9CFE960C14CC194500EB570C /* 12.jpg in Resources */,
+				9CFE960D14CC194500EB570C /* 13.jpg in Resources */,
+				9CFE960E14CC194500EB570C /* 14.jpg in Resources */,
+				9CFE960F14CC194500EB570C /* 15.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,10 +39,28 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize flowView = _flowView;
+
+- (void)fillImages
+{
+    images = [[NSBundle mainBundle] pathsForResourcesOfType:@"jpg"
+                                                inDirectory:@""];
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    [self fillImages];
+    [self.flowView setDataSource:self];
 }
 
+- (NSUInteger)numberOfItemsInImageFlow:(id)aFlow
+{
+    return [images count];
+}
+
+- (id)imageFlow:(id)aFlow itemAtIndex:(int)index
+{
+    return [images objectAtIndex:index];
+}
 @end

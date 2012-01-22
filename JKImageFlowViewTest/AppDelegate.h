@@ -35,9 +35,17 @@
 //  Joseph Kain.
 
 #import <Cocoa/Cocoa.h>
+#import "JKImageFlowView.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate> {
+    NSArray *images;
+}
 
 @property (assign) IBOutlet NSWindow *window;
+@property (assign) IBOutlet JKImageFlowView *flowView;
+
+// JKImageFlowDataSource Protocol (informal)
+- (NSUInteger)numberOfItemsInImageFlow:(id)aFlow;
+- (id)imageFlow:(id)aFlow itemAtIndex:(int)index;
 
 @end
