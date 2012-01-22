@@ -37,5 +37,20 @@
 #import "JKImageFlowView.h"
 
 @implementation JKImageFlowView
-
+- (id)initWithFrame:(NSRect)frameRect
+{
+    self = [super initWithFrame:frameRect];
+    if (self) {
+        qcview = [[QCView alloc] initWithFrame:frameRect];
+        [qcview setEventForwardingMask:NSAnyEventMask];
+        
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        [qcview loadCompositionFromFile:[bundle pathForResource:@"JKImageFlowView"
+                                                         ofType:@"qtz"]];
+        [qcview startRendering];
+        
+        [self addSubview:qcview];
+    }
+    return self;
+}
 @end

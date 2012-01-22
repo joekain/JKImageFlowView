@@ -35,7 +35,11 @@
 //  Joseph Kain.
 
 #import <Foundation/Foundation.h>
+#import <Quartz/Quartz.h>
 
-@interface JKImageFlowView : NSView
+@interface JKImageFlowView : NSView {
+    QCView *qcview;
+}
 
+- (id)initWithFrame:(NSRect)frameRect;
 @end
