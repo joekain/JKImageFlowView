@@ -60,12 +60,15 @@
     }
     return self;
 }
+
+#pragma mark - NSView methods
 - (void)setFrame:(NSRect)frameRect
 {
     [super setFrame:frameRect];
     [qcview setFrame:frameRect];
 }
 
+#pragma mark - Data Source
 - (void)reloadData
 {
     arrayFromDataSource = [[NSMutableArray alloc] init];
