@@ -1,0 +1,457 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9C4955E214CBDD0D005597F0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4955E114CBDD0D005597F0 /* Cocoa.framework */; };
+		9C4955EC14CBDD0D005597F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C4955EA14CBDD0D005597F0 /* InfoPlist.strings */; };
+		9C4955F014CBDD0D005597F0 /* JKImageFlowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C4955EF14CBDD0D005597F0 /* JKImageFlowView.m */; };
+		9C4955F914CBDD72005597F0 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4955F814CBDD72005597F0 /* Quartz.framework */; };
+		9C49560014CBDDB5005597F0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4955E114CBDD0D005597F0 /* Cocoa.framework */; };
+		9C49560614CBDDB5005597F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C49560414CBDDB5005597F0 /* InfoPlist.strings */; };
+		9C49560814CBDDB5005597F0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C49560714CBDDB5005597F0 /* main.m */; };
+		9C49560C14CBDDB5005597F0 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9C49560A14CBDDB5005597F0 /* Credits.rtf */; };
+		9C49560F14CBDDB5005597F0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C49560E14CBDDB5005597F0 /* AppDelegate.m */; };
+		9C49561214CBDDB5005597F0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C49561014CBDDB5005597F0 /* MainMenu.xib */; };
+		9C49561614CBDDBD005597F0 /* JKImageFlowView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4955DE14CBDD0D005597F0 /* JKImageFlowView.framework */; };
+		9C49561814CBE0F5005597F0 /* JKImageFlowView.qtz in Resources */ = {isa = PBXBuildFile; fileRef = 9C49561714CBE0F5005597F0 /* JKImageFlowView.qtz */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9C10CF8314CBE4CF00D5A857 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9C4955D414CBDD0C005597F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9C4955DD14CBDD0D005597F0;
+			remoteInfo = JKImageFlowView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9C4955DE14CBDD0D005597F0 /* JKImageFlowView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JKImageFlowView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C4955E114CBDD0D005597F0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		9C4955E414CBDD0D005597F0 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		9C4955E514CBDD0D005597F0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9C4955E614CBDD0D005597F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9C4955E914CBDD0D005597F0 /* JKImageFlowView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JKImageFlowView-Info.plist"; sourceTree = "<group>"; };
+		9C4955EB14CBDD0D005597F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C4955ED14CBDD0D005597F0 /* JKImageFlowView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JKImageFlowView-Prefix.pch"; sourceTree = "<group>"; };
+		9C4955EE14CBDD0D005597F0 /* JKImageFlowView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JKImageFlowView.h; sourceTree = "<group>"; };
+		9C4955EF14CBDD0D005597F0 /* JKImageFlowView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JKImageFlowView.m; sourceTree = "<group>"; };
+		9C4955F814CBDD72005597F0 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
+		9C4955FE14CBDDB5005597F0 /* JKImageFlowViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKImageFlowViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C49560314CBDDB5005597F0 /* JKImageFlowViewTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JKImageFlowViewTest-Info.plist"; sourceTree = "<group>"; };
+		9C49560514CBDDB5005597F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C49560714CBDDB5005597F0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9C49560914CBDDB5005597F0 /* JKImageFlowViewTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JKImageFlowViewTest-Prefix.pch"; sourceTree = "<group>"; };
+		9C49560B14CBDDB5005597F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		9C49560D14CBDDB5005597F0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9C49560E14CBDDB5005597F0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9C49561114CBDDB5005597F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9C49561714CBE0F5005597F0 /* JKImageFlowView.qtz */ = {isa = PBXFileReference; lastKnownFileType = "video.quartz-composer"; path = JKImageFlowView.qtz; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9C4955DA14CBDD0D005597F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C4955F914CBDD72005597F0 /* Quartz.framework in Frameworks */,
+				9C4955E214CBDD0D005597F0 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C4955FB14CBDDB5005597F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C49561614CBDDBD005597F0 /* JKImageFlowView.framework in Frameworks */,
+				9C49560014CBDDB5005597F0 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9C4955D214CBDD0C005597F0 = {
+			isa = PBXGroup;
+			children = (
+				9C4955E714CBDD0D005597F0 /* JKImageFlowView */,
+				9C49560114CBDDB5005597F0 /* JKImageFlowViewTest */,
+				9C4955E014CBDD0D005597F0 /* Frameworks */,
+				9C4955DF14CBDD0D005597F0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9C4955DF14CBDD0D005597F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9C4955DE14CBDD0D005597F0 /* JKImageFlowView.framework */,
+				9C4955FE14CBDDB5005597F0 /* JKImageFlowViewTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9C4955E014CBDD0D005597F0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C4955F814CBDD72005597F0 /* Quartz.framework */,
+				9C4955E114CBDD0D005597F0 /* Cocoa.framework */,
+				9C4955E314CBDD0D005597F0 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9C4955E314CBDD0D005597F0 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C4955E414CBDD0D005597F0 /* AppKit.framework */,
+				9C4955E514CBDD0D005597F0 /* CoreData.framework */,
+				9C4955E614CBDD0D005597F0 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		9C4955E714CBDD0D005597F0 /* JKImageFlowView */ = {
+			isa = PBXGroup;
+			children = (
+				9C4955EE14CBDD0D005597F0 /* JKImageFlowView.h */,
+				9C4955EF14CBDD0D005597F0 /* JKImageFlowView.m */,
+				9C4955E814CBDD0D005597F0 /* Supporting Files */,
+			);
+			path = JKImageFlowView;
+			sourceTree = "<group>";
+		};
+		9C4955E814CBDD0D005597F0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C49561714CBE0F5005597F0 /* JKImageFlowView.qtz */,
+				9C4955E914CBDD0D005597F0 /* JKImageFlowView-Info.plist */,
+				9C4955EA14CBDD0D005597F0 /* InfoPlist.strings */,
+				9C4955ED14CBDD0D005597F0 /* JKImageFlowView-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9C49560114CBDDB5005597F0 /* JKImageFlowViewTest */ = {
+			isa = PBXGroup;
+			children = (
+				9C49560D14CBDDB5005597F0 /* AppDelegate.h */,
+				9C49560E14CBDDB5005597F0 /* AppDelegate.m */,
+				9C49561014CBDDB5005597F0 /* MainMenu.xib */,
+				9C49560214CBDDB5005597F0 /* Supporting Files */,
+			);
+			path = JKImageFlowViewTest;
+			sourceTree = "<group>";
+		};
+		9C49560214CBDDB5005597F0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C49560314CBDDB5005597F0 /* JKImageFlowViewTest-Info.plist */,
+				9C49560414CBDDB5005597F0 /* InfoPlist.strings */,
+				9C49560714CBDDB5005597F0 /* main.m */,
+				9C49560914CBDDB5005597F0 /* JKImageFlowViewTest-Prefix.pch */,
+				9C49560A14CBDDB5005597F0 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		9C4955DB14CBDD0D005597F0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		9C4955DD14CBDD0D005597F0 /* JKImageFlowView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C4955F314CBDD0D005597F0 /* Build configuration list for PBXNativeTarget "JKImageFlowView" */;
+			buildPhases = (
+				9C4955D914CBDD0D005597F0 /* Sources */,
+				9C4955DA14CBDD0D005597F0 /* Frameworks */,
+				9C4955DB14CBDD0D005597F0 /* Headers */,
+				9C4955DC14CBDD0D005597F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JKImageFlowView;
+			productName = JKImageFlowView;
+			productReference = 9C4955DE14CBDD0D005597F0 /* JKImageFlowView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		9C4955FD14CBDDB5005597F0 /* JKImageFlowViewTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C49561314CBDDB5005597F0 /* Build configuration list for PBXNativeTarget "JKImageFlowViewTest" */;
+			buildPhases = (
+				9C4955FA14CBDDB5005597F0 /* Sources */,
+				9C4955FB14CBDDB5005597F0 /* Frameworks */,
+				9C4955FC14CBDDB5005597F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9C10CF8414CBE4CF00D5A857 /* PBXTargetDependency */,
+			);
+			name = JKImageFlowViewTest;
+			productName = JKImageFlowViewTest;
+			productReference = 9C4955FE14CBDDB5005597F0 /* JKImageFlowViewTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9C4955D414CBDD0C005597F0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Joseph Kain";
+			};
+			buildConfigurationList = 9C4955D714CBDD0C005597F0 /* Build configuration list for PBXProject "JKImageFlowView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9C4955D214CBDD0C005597F0;
+			productRefGroup = 9C4955DF14CBDD0D005597F0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9C4955DD14CBDD0D005597F0 /* JKImageFlowView */,
+				9C4955FD14CBDDB5005597F0 /* JKImageFlowViewTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9C4955DC14CBDD0D005597F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C4955EC14CBDD0D005597F0 /* InfoPlist.strings in Resources */,
+				9C49561814CBE0F5005597F0 /* JKImageFlowView.qtz in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C4955FC14CBDDB5005597F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C49560614CBDDB5005597F0 /* InfoPlist.strings in Resources */,
+				9C49560C14CBDDB5005597F0 /* Credits.rtf in Resources */,
+				9C49561214CBDDB5005597F0 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9C4955D914CBDD0D005597F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C4955F014CBDD0D005597F0 /* JKImageFlowView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9C4955FA14CBDDB5005597F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C49560814CBDDB5005597F0 /* main.m in Sources */,
+				9C49560F14CBDDB5005597F0 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9C10CF8414CBE4CF00D5A857 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9C4955DD14CBDD0D005597F0 /* JKImageFlowView */;
+			targetProxy = 9C10CF8314CBE4CF00D5A857 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9C4955EA14CBDD0D005597F0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C4955EB14CBDD0D005597F0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9C49560414CBDDB5005597F0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C49560514CBDDB5005597F0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9C49560A14CBDDB5005597F0 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C49560B14CBDDB5005597F0 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		9C49561014CBDDB5005597F0 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C49561114CBDDB5005597F0 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9C4955F114CBDD0D005597F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9C4955F214CBDD0D005597F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9C4955F414CBDD0D005597F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JKImageFlowView/JKImageFlowView-Prefix.pch";
+				INFOPLIST_FILE = "JKImageFlowView/JKImageFlowView-Info.plist";
+				INSTALL_PATH = "@executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		9C4955F514CBDD0D005597F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JKImageFlowView/JKImageFlowView-Prefix.pch";
+				INFOPLIST_FILE = "JKImageFlowView/JKImageFlowView-Info.plist";
+				INSTALL_PATH = "@executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		9C49561414CBDDB5005597F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JKImageFlowViewTest/JKImageFlowViewTest-Prefix.pch";
+				INFOPLIST_FILE = "JKImageFlowViewTest/JKImageFlowViewTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9C49561514CBDDB5005597F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JKImageFlowViewTest/JKImageFlowViewTest-Prefix.pch";
+				INFOPLIST_FILE = "JKImageFlowViewTest/JKImageFlowViewTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9C4955D714CBDD0C005597F0 /* Build configuration list for PBXProject "JKImageFlowView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C4955F114CBDD0D005597F0 /* Debug */,
+				9C4955F214CBDD0D005597F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9C4955F314CBDD0D005597F0 /* Build configuration list for PBXNativeTarget "JKImageFlowView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C4955F414CBDD0D005597F0 /* Debug */,
+				9C4955F514CBDD0D005597F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9C49561314CBDDB5005597F0 /* Build configuration list for PBXNativeTarget "JKImageFlowViewTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C49561414CBDDB5005597F0 /* Debug */,
+				9C49561514CBDDB5005597F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9C4955D414CBDD0C005597F0 /* Project object */;
+}
