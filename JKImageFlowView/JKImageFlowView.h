@@ -39,7 +39,12 @@
 
 @interface JKImageFlowView : NSView {
     QCView *qcview;
+    id dataSource;
+    NSMutableArray *arrayFromDataSource;
 }
 
 - (id)initWithFrame:(NSRect)frameRect;
+- (void)reloadData;
+@property (retain) id dataSource;
+
 @end

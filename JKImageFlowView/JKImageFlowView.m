@@ -36,7 +36,14 @@
 
 #import "JKImageFlowView.h"
 
+// JKImageFlowDataSource informal protocol
+@interface NSObject (JKImageFlowDataSource)
+- (NSUInteger)numberOfItemsInImageFlow:(id)aFlow;
+- (id)imageFlow:(id)aFlow itemAtIndex:(int)index;
+@end
+
 @implementation JKImageFlowView
+
 - (id)initWithFrame:(NSRect)frameRect
 {
     self = [super initWithFrame:frameRect];
@@ -53,4 +60,30 @@
     }
     return self;
 }
+
+- (void)reloadData
+{
+    arrayFromDataSource = [[NSMutableArray alloc] init];
+
+    int index;
+    for (index = 0; index < [dataSource numberOfItemsInImageFlow:self]; index++) {
+        NSMutableDictionary *tmp = [[NSMutableDictionary alloc] init];
+
+        [tmp setValue:[dataSource imageFlow:self itemAtIndex:index] forKey:@"url"];
+        [arrayFromDataSource insertObject:tmp atIndex:index];
+    }
+    [qcview setValue:arrayFromDataSource forInputKey:@"Image_List"];
+}
+
+- (id) dataSource
+{
+    return dataSource;
+}
+
+- (void) setDataSource:(id)newDataSource
+{
+    dataSource = newDataSource;
+    [self reloadData];
+}
+
 @end
