@@ -38,9 +38,9 @@
 #import <Quartz/Quartz.h>
 
 @interface JKImageFlowView : NSView {
-    QCView *qcview;
     id dataSource;
-    NSMutableArray *arrayFromDataSource;
+    NSArray *topImages;
+    NSArray *bottomImages;
 }
 
 - (id)initWithFrame:(NSRect)frameRect;
