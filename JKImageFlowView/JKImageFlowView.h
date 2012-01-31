@@ -39,8 +39,7 @@
 
 @interface JKImageFlowView : NSView {
     id dataSource;
-    NSArray *topImages;
-    NSArray *bottomImages;
+    NSArray *mLayers;
 }
 
 - (id)initWithFrame:(NSRect)frameRect;

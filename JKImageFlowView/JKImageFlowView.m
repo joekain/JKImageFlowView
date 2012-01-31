@@ -48,8 +48,7 @@
 {
     self = [super initWithFrame:frameRect];
     if (self) {
-        topImages = nil;
-        bottomImages = nil;
+        mLayers = nil;
     }
     return self;
 }
@@ -81,7 +80,7 @@ CGFloat yRotationDegreesFromPosition(CGFloat t)
 CGFloat zFromPosition(CGFloat t)
 {
     if (t == 0) {
-        return -0.25;
+        return 0.25;
     } else {
         return MAX(-fabs(t * 0.25), -1);
     } 
@@ -94,28 +93,33 @@ CGFloat aFromPosition(CGFloat t)
 
 - (void)drawCellWithImage:(CGImageRef)image
               withContext:(CGContextRef)context
+                  inLayer:(CALayer *)layer
 {
-    float height = 0.5;
-    float aspect = CGImageGetWidth(image) / CGImageGetHeight(image);
-    float width = aspect * height;
+    CGRect standard = layer.bounds;
+    standard.size.height *= 0.5;
+    CGRect reflected = standard;
+    //reflected.origin.y = 0;
+    standard.origin.y = standard.size.height;
 
-    NSRect standard = NSMakeRect(-width/2, 0, width, height);
-    NSRect reflected = standard;
-    reflected.origin.y = -height;
- 
-    CGFloat standardColor[] = {1.0, 1.0, 1.0, 1.0};
-    CGFloat reflectedColor[] = {0.3, 0.3, 0.3, 1.0};
-       
-    CGContextSetFillColor(context, standardColor);
-    CGContextFillRect(context, standard);
-    CGContextSetFillColor(context, reflectedColor);
-    CGContextFillRect(context, reflected);
+    CGContextSaveGState(context); {
+        CGContextSetRGBFillColor(context, 1.0, 1.0, 1.0, 1.0);
+        CGContextFillRect(context, standard);
+        CGContextSetRGBFillColor(context, 0.3, 0.3, 0.3, 1.0);
+        CGContextFillRect(context, reflected);
 
-    CGContextSetBlendMode(context, kCGBlendModeMultiply);    
-    CGContextDrawImage(context, standard, image);
-    CGContextScaleCTM (context, 1, -1);
-    reflected.origin.y = 0;
-    CGContextDrawImage(context, reflected, image);
+        CGContextSetBlendMode(context, kCGBlendModeMultiply);
+        CGContextDrawImage(context, standard, image);
+        CGContextScaleCTM (context, 1.0, -1.0);
+        reflected.origin.y = -reflected.size.height;
+        CGContextDrawImage(context, reflected, image);
+    }
+    CGContextRestoreGState(context);
+}
+
+- (void)drawLayer:(CALayer *)theLayer inContext:(CGContextRef)theContext
+{
+    CGImageRef image = [[theLayer valueForKey:@"image"] pointerValue];
+    [self drawCellWithImage:image withContext:theContext inLayer:theLayer];
 }
 
 #pragma mark - NSView methods
@@ -127,33 +131,10 @@ CGFloat aFromPosition(CGFloat t)
     }
 }
 
-#if 0
-- (void) drawRect:(NSRect)dirtyRect
-{
-    CGContextRef context = [[NSGraphicsContext currentContext] graphicsPort];
-    if (!topImages || !bottomImages) {
-        return;
-    }
-    
-    NSRect rect = [self frame];
-    CGContextClearRect (context, rect);
-    
-    // [-1,1] X [-1,1]
-    //CGContextScaleCTM (context, rect.size.width / 2, rect.size.height / 2);
-    // With 0,0 in the center
-    //CGContextTranslateCTM (context, 1.0, 1.0);
-    // XXX Would be nice to Y-invert
-    
-
-    [super drawRect:[self frame]];
-}
-#endif
-
 #pragma mark - Data Source
 - (void)reloadData
 {
     NSMutableArray *top = [[NSMutableArray alloc] init]; 
-    NSMutableArray *bottom = [[NSMutableArray alloc] init];
     
     CALayer *rootLayer = [CALayer layer];
     CGColorRef black = CGColorCreateGenericRGB(0.0f, 0.0f, 0.0f, 1.0f);
@@ -161,11 +142,10 @@ CGFloat aFromPosition(CGFloat t)
     CGColorRelease(black);
     [rootLayer setFrame:NSRectToCGRect([self frame])];
     CATransform3D sublayerTransform = CATransform3DIdentity;
-    sublayerTransform.m34 = 1 / -1000.0;   
+    sublayerTransform.m34 = 1 / -400.0;
     rootLayer.sublayerTransform = sublayerTransform;
 
     int index;
-    // [dataSource numberOfItemsInImageFlow:self]
     for (index = 0; index < [dataSource numberOfItemsInImageFlow:self]; index++) {
         CALayer *layer;
         
@@ -178,37 +158,44 @@ CGFloat aFromPosition(CGFloat t)
                                                              NULL,
                                                              YES,
                                                              kCGRenderingIntentDefault);
-                                                             
-        float aspect = CGImageGetWidth(image) / CGImageGetHeight(image);
+        CGImageRetain(image);
+        float aspect = (float)CGImageGetWidth(image) / CGImageGetHeight(image);
         
         layer = [CALayer layer];
-        layer.contents = (__bridge id)image;
+        [layer setValue:[NSValue valueWithPointer:image] forKey:@"image"];
+        layer.delegate = self;
         layer.layoutManager=[CAConstraintLayoutManager layoutManager];
-        layer.frame = rootLayer.frame;
-        [layer setValue:[NSNumber numberWithFloat:aspect] forKey:@"aspect"];
-        [top insertObject:layer atIndex:index];
+        CGRect rect = CGRectMake(0, 0, 300 * aspect, 300 * 2);
+        layer.frame = rect;
 
+        layer.backgroundColor = CGColorCreateGenericRGB(1.0, 1.0, 1.0, 1.0);
+        [layer setValue:[NSNumber numberWithFloat:aspect] forKey:@"aspect"];
+        [layer setNeedsDisplay];
+        [top insertObject:layer atIndex:index];
         [rootLayer addSublayer:layer];
     }
-    topImages = top;
-    bottomImages = bottom;
+    mLayers = top;
     
     int selection = 3;
     //int index;
     
-    for (index = 0; index < [topImages count]; index++) {
-        float t = (index - selection) / 9.0;
+    for (index = 0; index < [mLayers count]; index++) {
+        float t = (index - selection) / (float)[mLayers count];
         float x = xFromPosition(t);
         float yRot = yRotationDegreesFromPosition(t) * M_PI / 180.0;
         float z = zFromPosition(t);
-        float a = aFromPosition(t);
+        //float a = aFromPosition(t);
+
+        CALayer *layer;
+        CATransform3D t3D;
         
-        CALayer *layer = [topImages objectAtIndex:index];
-        CATransform3D t3D = CATransform3DIdentity;
-        t3D = CATransform3DTranslate(t3D, x * [self frame].size.width / 2, 0, z);
-        t3D = CATransform3DRotate(t3D, -yRot, 0, 1, 0);
-        float y = [[layer valueForKey:@"aspect"] floatValue] * 0.5;
-        t3D = CATransform3DScale(t3D, 0.5, y, 1);
+        layer = [mLayers objectAtIndex:index];
+        t3D = CATransform3DIdentity;
+        t3D = CATransform3DTranslate(t3D, [self frame].size.width / 2, [self frame].size.height / 2, 0);
+        t3D = CATransform3DTranslate(t3D, -layer.bounds.size.width / 2, -2 * layer.bounds.size.height / 3.0, 0);
+        t3D = CATransform3DTranslate(t3D, x * 300, 0, z * 300);
+        t3D = CATransform3DRotate(t3D, -yRot,  0, 1, 0);
+        t3D = CATransform3DScale(t3D, 0.5, 0.5, 1);
         layer.transform = t3D;
     }
     
