@@ -101,13 +101,11 @@ CGFloat aFromPosition(CGFloat t)
     CGRect reflected = standard;
     //reflected.origin.y = 0;
     standard.origin.y = standard.size.height;
-    float a = [[layer valueForKey:@"a"] floatValue];
-    a = 1.0;
 
     CGContextSaveGState(context); {
-        CGContextSetRGBFillColor(context, a, a, a, 1.0);
+        CGContextSetRGBFillColor(context, 1.0, 1.0, 1.0, 1.0);
         CGContextFillRect(context, standard);
-        CGContextSetRGBFillColor(context, 0.3 * a, 0.3 * a, 0.3 * a, 1.0);
+        CGContextSetRGBFillColor(context, 0.3, 0.3, 0.3, 1.0);
         CGContextFillRect(context, reflected);
 
         CGContextSetBlendMode(context, kCGBlendModeMultiply);
@@ -140,7 +138,6 @@ CGFloat aFromPosition(CGFloat t)
         CATransform3D t3D;
         
         layer = [mLayers objectAtIndex:index];
-        [layer setValue:[NSNumber numberWithFloat:a] forKey:@"a"];
         
         t3D = CATransform3DIdentity;
         t3D = CATransform3DTranslate(t3D, [self frame].size.width / 2, [self frame].size.height / 2, 0);
@@ -150,7 +147,9 @@ CGFloat aFromPosition(CGFloat t)
         t3D = CATransform3DScale(t3D, 0.5, 0.5, 1);
         layer.transform = t3D;
         
-        //[layer setNeedsDisplay];
+        // Darken the sublayer
+        layer = [layer.sublayers objectAtIndex:0];
+        layer.opacity = 1 - a;
     } 
 }
 
@@ -206,6 +205,14 @@ CGFloat aFromPosition(CGFloat t)
         [layer setNeedsDisplay];
         [top insertObject:layer atIndex:index];
         [rootLayer addSublayer:layer];
+        
+        // Add a black sublayer covering the image.  The opacity of this
+        // sublayer will be adjusted to darken or lighten the image.
+        CALayer *subLayer = [CALayer layer];
+        subLayer.frame = rect;
+        subLayer.backgroundColor = CGColorCreateGenericRGB(0.0, 0.0, 0.0, 1.0);
+        subLayer.opacity = 0.0;
+        [layer addSublayer:subLayer];
     }
     mLayers = top;
     
