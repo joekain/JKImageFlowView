@@ -279,4 +279,41 @@ CGFloat aFromPosition(CGFloat t)
     }
 }
 
+- (Boolean)checkPoint:(NSPoint)point inLayerWithIndex:(int)index
+{
+    CALayer *root = [self layer];
+    CALayer *layer = [mLayers objectAtIndex:index];
+    CGPoint p = [root convertPoint:[self convertPointToLayer:point]
+                           toLayer:layer];
+    if ([layer containsPoint:p]) {
+        selection = index;
+        [self redraw];
+        return YES;
+    }
+    return NO;
+}
+
+- (void)mouseDown:(NSEvent *)theEvent
+{
+    int index;
+    
+    NSPoint viewPoint = [self convertPoint:[theEvent locationInWindow]
+                                  fromView:nil];
+    
+    // Need to consider the front most cells first.  However, the cells to the
+    // left and the right of the selection don't overlap so it works to consider
+    // the cells to the right starting with the selection and then go back to 
+    // the cells on the left starting with the cell closest to the selection.
+    for (index = selection; index < [mLayers count]; index++) {
+        if ([self checkPoint:viewPoint inLayerWithIndex:index]) {
+            return;
+        }
+    }
+    for (index = selection - 1; index >= 0; index--) {
+        if ([self checkPoint:viewPoint inLayerWithIndex:index]) {
+            return;
+        }
+    }
+}
+
 @end
