@@ -38,6 +38,7 @@
 #import <Quartz/Quartz.h>
 
 @interface JKImageFlowView : NSView {
+    int selection;
     id dataSource;
     NSArray *mLayers;
 }

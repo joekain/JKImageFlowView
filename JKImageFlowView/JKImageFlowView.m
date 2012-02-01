@@ -48,6 +48,7 @@
 {
     self = [super initWithFrame:frameRect];
     if (self) {
+        selection = 0;
         mLayers = nil;
     }
     return self;
@@ -100,11 +101,13 @@ CGFloat aFromPosition(CGFloat t)
     CGRect reflected = standard;
     //reflected.origin.y = 0;
     standard.origin.y = standard.size.height;
+    float a = [[layer valueForKey:@"a"] floatValue];
+    a = 1.0;
 
     CGContextSaveGState(context); {
-        CGContextSetRGBFillColor(context, 1.0, 1.0, 1.0, 1.0);
+        CGContextSetRGBFillColor(context, a, a, a, 1.0);
         CGContextFillRect(context, standard);
-        CGContextSetRGBFillColor(context, 0.3, 0.3, 0.3, 1.0);
+        CGContextSetRGBFillColor(context, 0.3 * a, 0.3 * a, 0.3 * a, 1.0);
         CGContextFillRect(context, reflected);
 
         CGContextSetBlendMode(context, kCGBlendModeMultiply);
@@ -122,12 +125,41 @@ CGFloat aFromPosition(CGFloat t)
     [self drawCellWithImage:image withContext:theContext inLayer:theLayer];
 }
 
+- (void) redraw
+{
+    int index;
+    
+    for (index = 0; index < [mLayers count]; index++) {
+        float t = (index - selection) / (float)[mLayers count];
+        float x = xFromPosition(t);
+        float yRot = yRotationDegreesFromPosition(t) * M_PI / 180.0;
+        float z = zFromPosition(t);
+        float a = aFromPosition(t);
+        
+        CALayer *layer;
+        CATransform3D t3D;
+        
+        layer = [mLayers objectAtIndex:index];
+        [layer setValue:[NSNumber numberWithFloat:a] forKey:@"a"];
+        
+        t3D = CATransform3DIdentity;
+        t3D = CATransform3DTranslate(t3D, [self frame].size.width / 2, [self frame].size.height / 2, 0);
+        t3D = CATransform3DTranslate(t3D, -layer.bounds.size.width / 2, -2 * layer.bounds.size.height / 3.0, 0);
+        t3D = CATransform3DTranslate(t3D, x * 300, 0, z * 300);
+        t3D = CATransform3DRotate(t3D, -yRot,  0, 1, 0);
+        t3D = CATransform3DScale(t3D, 0.5, 0.5, 1);
+        layer.transform = t3D;
+        
+        //[layer setNeedsDisplay];
+    } 
+}
+
 #pragma mark - NSView methods
 - (void)setFrame:(NSRect)frameRect
 {
     [super setFrame:frameRect];
     for (CALayer *layer in [[self layer] sublayers]) {
-        [layer setFrame:NSRectToCGRect([self frame])];
+        //[layer setFrame:NSRectToCGRect([self frame])];
     }
 }
 
@@ -160,7 +192,7 @@ CGFloat aFromPosition(CGFloat t)
                                                              kCGRenderingIntentDefault);
         CGImageRetain(image);
         float aspect = (float)CGImageGetWidth(image) / CGImageGetHeight(image);
-        
+
         layer = [CALayer layer];
         [layer setValue:[NSValue valueWithPointer:image] forKey:@"image"];
         layer.delegate = self;
@@ -169,6 +201,7 @@ CGFloat aFromPosition(CGFloat t)
         layer.frame = rect;
 
         layer.backgroundColor = CGColorCreateGenericRGB(1.0, 1.0, 1.0, 1.0);
+        layer.edgeAntialiasingMask = kCALayerBottomEdge | kCALayerTopEdge;
         [layer setValue:[NSNumber numberWithFloat:aspect] forKey:@"aspect"];
         [layer setNeedsDisplay];
         [top insertObject:layer atIndex:index];
@@ -176,28 +209,7 @@ CGFloat aFromPosition(CGFloat t)
     }
     mLayers = top;
     
-    int selection = 3;
-    //int index;
-    
-    for (index = 0; index < [mLayers count]; index++) {
-        float t = (index - selection) / (float)[mLayers count];
-        float x = xFromPosition(t);
-        float yRot = yRotationDegreesFromPosition(t) * M_PI / 180.0;
-        float z = zFromPosition(t);
-        //float a = aFromPosition(t);
-
-        CALayer *layer;
-        CATransform3D t3D;
-        
-        layer = [mLayers objectAtIndex:index];
-        t3D = CATransform3DIdentity;
-        t3D = CATransform3DTranslate(t3D, [self frame].size.width / 2, [self frame].size.height / 2, 0);
-        t3D = CATransform3DTranslate(t3D, -layer.bounds.size.width / 2, -2 * layer.bounds.size.height / 3.0, 0);
-        t3D = CATransform3DTranslate(t3D, x * 300, 0, z * 300);
-        t3D = CATransform3DRotate(t3D, -yRot,  0, 1, 0);
-        t3D = CATransform3DScale(t3D, 0.5, 0.5, 1);
-        layer.transform = t3D;
-    }
+    [self redraw];
     
     [self setLayer:rootLayer];
     [self setWantsLayer:YES];
@@ -213,6 +225,58 @@ CGFloat aFromPosition(CGFloat t)
 {
     dataSource = newDataSource;
     [self reloadData];
+}
+
+#pragma mark - NSResponder
+
+#define kLeftArrowKeyCode 123
+#define kRightArrowKeyCode 124
+
+- (BOOL)acceptsFirstResponder
+{
+    return YES;
+}
+
+- (BOOL)wantsScrollEventsForSwipeTrackingOnAxis:(NSEventGestureAxis)axis 
+{
+    // Inform the underlying view that we want horizontal scroll gesture events
+    return (axis == NSEventGestureAxisHorizontal) ? YES : NO;
+}
+
+- (void)keyDown:(NSEvent *)theEvent
+{
+    switch ([theEvent keyCode]) {
+        case kLeftArrowKeyCode:
+            if (selection > 0) {
+                selection--;
+                [self redraw];
+            }
+            break;
+        case kRightArrowKeyCode:
+            if (selection < [mLayers count] - 1) {
+                selection++;
+                [self redraw];
+            }
+            break;
+            
+        default:
+            [super keyDown:theEvent];
+            break;
+    }
+}
+
+- (void)scrollWheel:(NSEvent *)theEvent 
+{
+    // This works the way I want.  To mimic IKImageFlowView I would need to
+    // soften (or slow down) the scroll at the end points.
+    // momentumPhase may be useful here
+    if ([theEvent deltaX] < 0 && selection < [mLayers count] - 1) {
+        selection++;
+        [self redraw];
+    } else if ([theEvent deltaX] > 0 && selection > 0) {
+        selection--;
+        [self redraw];
+    }
 }
 
 @end
