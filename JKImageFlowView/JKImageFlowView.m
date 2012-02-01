@@ -201,7 +201,6 @@ CGFloat aFromPosition(CGFloat t)
 
         layer.backgroundColor = CGColorCreateGenericRGB(1.0, 1.0, 1.0, 1.0);
         layer.edgeAntialiasingMask = kCALayerBottomEdge | kCALayerTopEdge;
-        [layer setValue:[NSNumber numberWithFloat:aspect] forKey:@"aspect"];
         [layer setNeedsDisplay];
         [top insertObject:layer atIndex:index];
         [rootLayer addSublayer:layer];
