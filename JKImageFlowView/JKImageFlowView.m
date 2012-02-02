@@ -36,6 +36,22 @@
 
 #import "JKImageFlowView.h"
 
+NSString * const JKImageBrowserPathRepresentationType = @"JKImageBrowserPathRepresentationType";
+NSString * const JKImageBrowserNSURLRepresentationType = @"JKImageBrowserNSURLRepresentationType";
+NSString * const JKImageBrowserNSImageRepresentationType = @"JKImageBrowserNSImageRepresentationType";
+NSString * const JKImageBrowserCGImageRepresentationType = @"JKImageBrowserCGImageRepresentationType";
+NSString * const JKImageBrowserCGImageSourceRepresentationType = @"JKImageBrowserCGImageSourceRepresentationType";
+NSString * const JKImageBrowserNSDataRepresentationType = @"JKImageBrowserNSDataRepresentationType";
+NSString * const JKImageBrowserNSBitmapImageRepresentationType = @"JKImageBrowserNSBitmapImageRepresentationType";
+NSString * const JKImageBrowserQTMovieRepresentationType = @"JKImageBrowserQTMovieRepresentationType";
+NSString * const JKImageBrowserQTMoviePathRepresentationType = @"JKImageBrowserQTMoviePathRepresentationType";
+NSString * const JKImageBrowserQCCompositionRepresentationType = @"JKImageBrowserQCCompositionRepresentationType";
+NSString * const JKImageBrowserQCCompositionPathRepresentationType = @"JKImageBrowserQCCompositionPathRepresentationType";
+NSString * const JKImageBrowserQuickLookPathRepresentationType = @"JKImageBrowserQuickLookPathRepresentationType";
+NSString * const JKImageBrowserIconRefPathRepresentationType = @"JKImageBrowserIconRefPathRepresentationType";
+NSString * const JKImageBrowserIconRefRepresentationType = @"JKImageBrowserIconRefRepresentationType";
+NSString * const JKImageBrowserPDFPageRepresentationType = @"JKImageBrowserPDFPageRepresentationType";
+
 // JKImageFlowDataSource informal protocol
 @interface NSObject (JKImageFlowDataSource)
 - (NSUInteger)numberOfItemsInImageFlow:(id)aFlow;
