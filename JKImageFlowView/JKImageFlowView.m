@@ -35,6 +35,7 @@
 //  Joseph Kain.
 
 #import "JKImageFlowView.h"
+#import "JKImageFlowItem.h"
 
 NSString * const JKImageBrowserPathRepresentationType = @"JKImageBrowserPathRepresentationType";
 NSString * const JKImageBrowserNSURLRepresentationType = @"JKImageBrowserNSURLRepresentationType";
@@ -188,6 +189,21 @@ CGFloat aFromPosition(CGFloat t)
     [CATransaction commit];
 }
 
+- (CGImageRef)imageFromItem:(NSObject <JKImageFlowItem> *)item
+{
+    NSString *type = [item imageRepresentationType];
+    if ([type isEqualToString:JKImageBrowserPathRepresentationType]) {
+        const char *path = [[item imageRepresentation]  
+                            cStringUsingEncoding:NSASCIIStringEncoding];
+        CGDataProviderRef provider = CGDataProviderCreateWithFilename(path);
+        return CGImageCreateWithJPEGDataProvider(provider, NULL, YES,
+                                                 kCGRenderingIntentDefault);
+    } else {
+        // Not supported yet
+        return nil;
+    }
+}
+
 #pragma mark - Data Source
 - (void)reloadData
 {
@@ -206,15 +222,8 @@ CGFloat aFromPosition(CGFloat t)
     for (index = 0; index < [dataSource numberOfItemsInImageFlow:self]; index++) {
         CALayer *layer;
         
-        // XXX Need to support URL as well as path, maybe others
-        // XXX Don't assume JPEG
-        const char *path = [[dataSource imageFlow:self itemAtIndex:index] 
-                            cStringUsingEncoding:NSASCIIStringEncoding];
-        CGDataProviderRef provider = CGDataProviderCreateWithFilename(path);
-        CGImageRef image = CGImageCreateWithJPEGDataProvider(provider,
-                                                             NULL,
-                                                             YES,
-                                                             kCGRenderingIntentDefault);
+        CGImageRef image = [self imageFromItem:[dataSource imageFlow:self
+                                                         itemAtIndex:index]];
         CGImageRetain(image);
         float aspect = (float)CGImageGetWidth(image) / CGImageGetHeight(image);
 
@@ -253,7 +262,7 @@ CGFloat aFromPosition(CGFloat t)
     return dataSource;
 }
 
-- (void) setDataSource:(id)newDataSource
+- (void) setDataSource:(id <JKImageFlowDataSource>)newDataSource
 {
     dataSource = newDataSource;
     [self reloadData];

@@ -37,6 +37,8 @@
 #import <Foundation/Foundation.h>
 #import <Quartz/Quartz.h>
 
+#import "JKImageFlowDataSource.h"
+
 @interface JKImageFlowView : NSView {
     int selection;
     id dataSource;
@@ -46,6 +48,6 @@
 - (id)initWithFrame:(NSRect)frameRect;
 - (void)reloadData;
 - (void)setFrame:(NSRect)frameRect;
-@property (retain) id dataSource;
+@property (retain) id <JKImageFlowDataSource> dataSource;
 
 @end
