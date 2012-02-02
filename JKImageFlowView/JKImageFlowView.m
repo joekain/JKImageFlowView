@@ -193,11 +193,12 @@ CGFloat aFromPosition(CGFloat t)
 {
     NSString *type = [item imageRepresentationType];
     if ([type isEqualToString:JKImageBrowserPathRepresentationType]) {
-        const char *path = [[item imageRepresentation]  
-                            cStringUsingEncoding:NSASCIIStringEncoding];
-        CGDataProviderRef provider = CGDataProviderCreateWithFilename(path);
-        return CGImageCreateWithJPEGDataProvider(provider, NULL, YES,
-                                                 kCGRenderingIntentDefault);
+        NSImage *nsImage; 
+        nsImage = [[NSImage alloc] initByReferencingFile:[item imageRepresentation]];
+        
+        return [nsImage CGImageForProposedRect:nil
+                                       context:[NSGraphicsContext currentContext]
+                                         hints:nil];
     } else {
         // Not supported yet
         return nil;
