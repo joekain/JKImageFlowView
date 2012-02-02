@@ -13,4 +13,5 @@
     NSString *filePath;
 }
 
+- (id)initWithPath:(NSString *)aPath;
 @end

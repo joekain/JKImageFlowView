@@ -10,6 +10,15 @@
 
 @implementation FlowItem
 
+- (id)initWithPath:(NSString *)aPath
+{
+    self = [super init];
+    if (self) {
+        filePath = aPath;
+    }
+    return self;
+}
+
 - (NSString *) imageUID
 {
     return filePath;

@@ -35,6 +35,7 @@
 //  Joseph Kain.
 
 #import "AppDelegate.h"
+#import "FlowItem.h"
 
 @implementation AppDelegate
 
@@ -43,8 +44,14 @@
 
 - (void)fillImages
 {
-    images = [[NSBundle mainBundle] pathsForResourcesOfType:@"jpg"
-                                                inDirectory:@""];
+    NSArray *paths = [[NSBundle mainBundle] pathsForResourcesOfType:@"jpg"
+                                                        inDirectory:@""];
+                                                        
+    NSMutableArray *newImages = [NSMutableArray arrayWithCapacity:[paths count]];
+    for (NSString *path in paths) {
+        [newImages addObject:[[FlowItem alloc] initWithPath:path]];
+    }
+    images = newImages;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
