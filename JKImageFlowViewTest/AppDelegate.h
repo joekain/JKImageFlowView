@@ -36,8 +36,10 @@
 
 #import <Cocoa/Cocoa.h>
 #import "JKImageFlowView.h"
+#import "JKImageFlowDataSource.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate> {
+@interface AppDelegate : NSObject <NSApplicationDelegate,
+                                   JKImageFlowDataSource> {
     NSArray *images;
 }
 

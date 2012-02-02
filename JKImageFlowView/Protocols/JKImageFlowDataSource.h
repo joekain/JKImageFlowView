@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+@class JKImageFlowView;
 @protocol JKImageFlowDataSource <NSObject>
 
-- (id) imageBrowser:(IKImageBrowserView *) aBrowser itemAtIndex:(NSUInteger)index;
-- (NSUInteger) numberOfItemsInImageBrowser:(IKImageBrowserView *) aBrowser;
+- (id) imageBrowser:(JKImageFlowView *) aBrowser itemAtIndex:(NSUInteger)index;
+- (NSUInteger) numberOfItemsInImageBrowser:(JKImageFlowView *) aBrowser;
 
 @end
