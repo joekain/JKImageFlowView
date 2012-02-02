@@ -99,7 +99,6 @@ CGFloat aFromPosition(CGFloat t)
     CGRect standard = layer.bounds;
     standard.size.height *= 0.5;
     CGRect reflected = standard;
-    //reflected.origin.y = 0;
     standard.origin.y = standard.size.height;
 
     CGContextSaveGState(context); {
@@ -144,7 +143,11 @@ CGFloat aFromPosition(CGFloat t)
         t3D = CATransform3DTranslate(t3D, -layer.bounds.size.width / 2, -2 * layer.bounds.size.height / 3.0, 0);
         t3D = CATransform3DTranslate(t3D, x * 300, 0, z * 300);
         t3D = CATransform3DRotate(t3D, -yRot,  0, 1, 0);
-        t3D = CATransform3DScale(t3D, 0.5, 0.5, 1);
+        
+        // Scale the cells with respect to the width of the view.  Use 600
+        // and an arbitrary reference width.
+        float s = [self frame].size.width / 600;
+        t3D = CATransform3DScale(t3D, 0.5 * s, 0.5 * s, 1);
         layer.transform = t3D;
         
         // Darken the sublayer
@@ -157,9 +160,16 @@ CGFloat aFromPosition(CGFloat t)
 - (void)setFrame:(NSRect)frameRect
 {
     [super setFrame:frameRect];
-    for (CALayer *layer in [[self layer] sublayers]) {
-        //[layer setFrame:NSRectToCGRect([self frame])];
+    
+    // Redraw so that the positions are recalculated and the flow stays in
+    // the in ceter of the view.  But, make the animations instant during
+    // the resize so it feels snapier
+    [CATransaction begin]; {
+        [CATransaction setValue:[NSNumber numberWithFloat:0.00f]
+                         forKey:kCATransactionAnimationDuration];
+        [self redraw];
     }
+    [CATransaction commit];
 }
 
 #pragma mark - Data Source
