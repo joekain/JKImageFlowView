@@ -192,15 +192,37 @@ CGFloat aFromPosition(CGFloat t)
 - (CGImageRef)imageFromItem:(NSObject <JKImageFlowItem> *)item
 {
     NSString *type = [item imageRepresentationType];
+    NSImage *nsImage = nil;
+
     if ([type isEqualToString:JKImageBrowserPathRepresentationType]) {
-        NSImage *nsImage; 
         nsImage = [[NSImage alloc] initByReferencingFile:[item imageRepresentation]];
-        
+    } else if ([type isEqualToString:JKImageBrowserNSURLRepresentationType]) {
+        nsImage = [[NSImage alloc] initWithContentsOfURL:[item imageRepresentation]];
+    } else if ([type isEqualToString:JKImageBrowserNSImageRepresentationType]) {
+        nsImage = [item imageRepresentation];
+    } else if ([type isEqualToString:JKImageBrowserCGImageRepresentationType]) {
+        return (__bridge CGImageRef)[item imageRepresentation];
+    } else if ([type isEqualToString:JKImageBrowserCGImageSourceRepresentationType]) {
+        /* CGImageSourceRef */
+    } else if ([type isEqualToString:JKImageBrowserNSDataRepresentationType]) {
+        nsImage = [[NSImage alloc] initWithData:[item imageRepresentation]];
+    } else if ([type isEqualToString:JKImageBrowserNSBitmapImageRepresentationType]) {
+        return [[item imageRepresentation] CGImage];
+    } else if ([type isEqualToString:JKImageBrowserQTMovieRepresentationType]) {
+    } else if ([type isEqualToString:JKImageBrowserQTMoviePathRepresentationType]) {
+    } else if ([type isEqualToString:JKImageBrowserQCCompositionRepresentationType]) {
+    } else if ([type isEqualToString:JKImageBrowserQCCompositionPathRepresentationType]) {
+    } else if ([type isEqualToString:JKImageBrowserQuickLookPathRepresentationType]) {
+    } else if ([type isEqualToString:JKImageBrowserIconRefPathRepresentationType]) {
+    } else if ([type isEqualToString:JKImageBrowserIconRefRepresentationType]) {
+    } else if ([type isEqualToString:JKImageBrowserPDFPageRepresentationType]) {
+    }
+
+    if (nsImage) {
         return [nsImage CGImageForProposedRect:nil
                                        context:[NSGraphicsContext currentContext]
                                          hints:nil];
     } else {
-        // Not supported yet
         return nil;
     }
 }
