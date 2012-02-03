@@ -44,12 +44,37 @@
 
 - (void)fillImages
 {
+    /* All of the representation types to test */
+    NSString *types[] = {
+        JKImageBrowserPathRepresentationType,
+        JKImageBrowserNSURLRepresentationType,
+        JKImageBrowserNSImageRepresentationType,
+        //JKImageBrowserCGImageRepresentationType,
+        //JKImageBrowserCGImageSourceRepresentationType,
+        JKImageBrowserNSDataRepresentationType,
+        JKImageBrowserNSBitmapImageRepresentationType,
+        //JKImageBrowserQTMovieRepresentationType,
+        //JKImageBrowserQTMoviePathRepresentationType,
+        //JKImageBrowserQCCompositionRepresentationType,
+        //JKImageBrowserQCCompositionPathRepresentationType,
+        //JKImageBrowserQuickLookPathRepresentationType,
+        //JKImageBrowserIconRefPathRepresentationType,
+        //JKImageBrowserIconRefRepresentationType,
+        //JKImageBrowserPDFPageRepresentationType,
+    };
+    int numTypes = sizeof(types) / sizeof(NSString *);
+    int index;
+
     NSArray *paths = [[NSBundle mainBundle] pathsForResourcesOfType:@"jpg"
                                                         inDirectory:@""];
-                                                        
+    assert([paths count] >= numTypes);
+    
     NSMutableArray *newImages = [NSMutableArray arrayWithCapacity:[paths count]];
+    index = 0;
     for (NSString *path in paths) {
-        [newImages addObject:[[FlowItem alloc] initWithPath:path]];
+        [newImages addObject:[[FlowItem alloc] initWithPath:path
+                                                    andType:types[index % numTypes]]];
+        index++;
     }
     images = newImages;
 }

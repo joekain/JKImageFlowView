@@ -10,8 +10,11 @@
 #import "JKImageFlowItem.h"
 
 @interface FlowItem : NSObject <JKImageFlowItem> {
+    NSString *type;
     NSString *filePath;
+    id representation;
 }
 
 - (id)initWithPath:(NSString *)aPath;
+- (id)initWithPath:(NSString *)aPath andType:(NSString *)type;
 @end
