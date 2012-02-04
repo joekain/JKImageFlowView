@@ -152,7 +152,8 @@ CGFloat aFromPosition(CGFloat t)
 - (void) redraw
 {
     int index;
-
+    CALayer *layer;
+    
     // Redraw as a single transaction
     [CATransaction begin];
     
@@ -165,7 +166,6 @@ CGFloat aFromPosition(CGFloat t)
         float z = zFromPosition(t);
         float a = aFromPosition(t);
         
-        CALayer *layer;
         CATransform3D t3D;
         
         layer = [mLayers objectAtIndex:index];
@@ -182,6 +182,21 @@ CGFloat aFromPosition(CGFloat t)
         layer = [layer.sublayers objectAtIndex:0];
         layer.opacity = 1 - a;
     }
+
+    layer = [mLayers objectAtIndex:selection];
+    mTitleLayer.string = [mTitles objectAtIndex:selection];
+    mTitleLayer.frame = CGRectMake(0, 0, [self frame].size.width, 25);
+    mTitleLayer.zPosition = 100;
+    CGPoint position = 
+        CGPointMake([self frame].size.width / 2.0,
+                    ([self frame].size.height / 2) - layer.bounds.size.height / 4.5);
+    mTitleLayer.position = position;
+
+    mSubtitleLayer.string = [mSubtitles objectAtIndex:selection];
+    mSubtitleLayer.frame = CGRectMake(0, 0, [self frame].size.width, 25);
+    mSubtitleLayer.zPosition = 100;
+    position.y -= 25;
+    mSubtitleLayer.position = position;
 
     [CATransaction commit];
 }
@@ -244,6 +259,8 @@ CGFloat aFromPosition(CGFloat t)
 - (void)reloadData
 {
     NSMutableArray *top = [[NSMutableArray alloc] init]; 
+    NSMutableArray *titles = [[NSMutableArray alloc] init];
+    NSMutableArray *subtitles = [[NSMutableArray alloc] init];
     
     CALayer *rootLayer = [CALayer layer];
     CGColorRef black = CGColorCreateGenericRGB(0.0f, 0.0f, 0.0f, 1.0f);
@@ -282,8 +299,47 @@ CGFloat aFromPosition(CGFloat t)
         subLayer.backgroundColor = CGColorCreateGenericRGB(0.0, 0.0, 0.0, 1.0);
         subLayer.opacity = 0.0;
         [layer addSublayer:subLayer];
+        
+        id <JKImageFlowItem> item = [dataSource imageFlow:self itemAtIndex:index];
+        
+        if ([item respondsToSelector:@selector(imageTitle)]) {
+            NSString *title = item.imageTitle;
+            if (title) {
+                [titles insertObject:title atIndex:index];
+            } else {
+                [titles insertObject:[NSString stringWithString:@""] atIndex:index];
+            }
+        }
+        if ([item respondsToSelector:@selector(imageSubtitle)]) {
+            NSString *title = item.imageSubtitle;
+            if (title) {
+                [subtitles insertObject:title atIndex:index];
+            } else {
+                [subtitles insertObject:[NSString stringWithString:@""] atIndex:index];
+            }
+        }
     }
     mLayers = top;
+    mTitles = titles;
+    mSubtitles = subtitles;
+    
+    mTitleLayer = [CATextLayer layer];
+    mTitleLayer.layoutManager = [CAConstraintLayoutManager layoutManager];
+    mTitleLayer.frame = CGRectMake(0, 0, [self frame].size.width, 25);
+    mTitleLayer.string = [titles objectAtIndex:0];
+    mTitleLayer.fontSize = 12.0;
+    mTitleLayer.font = @"Menlo";
+    mTitleLayer.alignmentMode = kCAAlignmentCenter;
+    [rootLayer addSublayer:mTitleLayer];
+    
+    mSubtitleLayer = [CATextLayer layer];
+    mSubtitleLayer.layoutManager = [CAConstraintLayoutManager layoutManager];
+    mSubtitleLayer.frame = CGRectMake(0, 0, [self frame].size.width, 25);
+    mSubtitleLayer.string = [subtitles objectAtIndex:0];
+    mSubtitleLayer.fontSize = 12.0;
+    mSubtitleLayer.font = @"Menlo";
+    mSubtitleLayer.alignmentMode = kCAAlignmentCenter;
+    [rootLayer addSublayer:mSubtitleLayer];
     
     [self redraw];
     

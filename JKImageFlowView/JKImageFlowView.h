@@ -43,6 +43,10 @@
     int selection;
     id dataSource;
     NSArray *mLayers;
+    CATextLayer *mTitleLayer;
+    CATextLayer *mSubtitleLayer;
+    NSArray *mTitles;
+    NSArray *mSubtitles;
 }
 
 - (id)initWithFrame:(NSRect)frameRect;
