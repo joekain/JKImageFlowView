@@ -41,6 +41,7 @@
 
 @synthesize window = _window;
 @synthesize flowView = _flowView;
+@synthesize label = _label;
 
 - (void)fillImages
 {
@@ -84,6 +85,7 @@
     // Insert code here to initialize your application
     [self fillImages];
     [self.flowView setDataSource:self];
+    [self.flowView setDelegate:self];
 }
 
 - (NSUInteger)numberOfItemsInImageFlow:(id)aFlow
@@ -95,4 +97,32 @@
 {
     return [images objectAtIndex:index];
 }
+
+#pragma mark - JKImageFlowDelegate
+
+- (void) imageFlow:(JKImageFlowView *) aFlow
+         backgroundWasRightClickedWithEvent:(NSEvent *) event
+{
+    self.label.stringValue = @"Background right clicked";
+}
+
+- (void) imageFlow:(JKImageFlowView *) aFlow
+         cellWasDoubleClickedAtIndex:(NSUInteger) index
+{
+    self.label.stringValue = [NSString stringWithFormat:@"Double clicked %d", index];
+}
+
+- (void) imageFlow:(JKImageFlowView *) aFlow
+         cellWasRightClickedAtIndex:(NSUInteger) index
+         withEvent:(NSEvent *) event
+{
+    self.label.stringValue = [NSString stringWithFormat:@"Right clicked %d", index];
+}
+
+- (void) imageFlowSelectionDidChange:(JKImageFlowView *) aFlow
+{
+    self.label.stringValue = [NSString stringWithFormat:@"Selection changed to %d",
+                              self.flowView.selection];
+}
+
 @end

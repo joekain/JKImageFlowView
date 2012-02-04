@@ -35,16 +35,20 @@
 //  Joseph Kain.
 
 #import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+
 #import "JKImageFlowView.h"
 #import "JKImageFlowDataSource.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate,
-                                   JKImageFlowDataSource> {
+                                   JKImageFlowDataSource,
+                                   JKImageFlowDelegate> {
     NSArray *images;
 }
 
 @property (assign) IBOutlet NSWindow *window;
 @property (assign) IBOutlet JKImageFlowView *flowView;
+@property (assign) IBOutlet NSTextField *label;
 
 // JKImageFlowDataSource Protocol (informal)
 - (NSUInteger)numberOfItemsInImageFlow:(id)aFlow;
