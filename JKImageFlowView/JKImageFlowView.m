@@ -65,10 +65,24 @@ NSString * const JKImageBrowserPDFPageRepresentationType = @"JKImageBrowserPDFPa
 {
     self = [super initWithFrame:frameRect];
     if (self) {
-        selection = 0;
+        mSelection = 0;
         mLayers = nil;
     }
     return self;
+}
+
+- (int) selection
+{
+    return mSelection;
+}
+
+- (void) setSelection:(int)selection
+{
+    mSelection = selection;
+    
+    if ([mDelegate respondsToSelector:@selector(imageFlowSelectionDidChange:)]) {
+        [mDelegate imageFlowSelectionDidChange:self];
+    }
 }
 
 #pragma mark - Drawing methods
@@ -160,7 +174,7 @@ CGFloat aFromPosition(CGFloat t)
     [self layer].sublayerTransform = [self rootTransform];
 
     for (index = 0; index < [mLayers count]; index++) {
-        float t = (index - selection) / (float)[mLayers count];
+        float t = (index - self.selection) / (float)[mLayers count];
         float x = xFromPosition(t);
         float yRot = yRotationDegreesFromPosition(t) * M_PI / 180.0;
         float z = zFromPosition(t);
@@ -183,8 +197,8 @@ CGFloat aFromPosition(CGFloat t)
         layer.opacity = 1 - a;
     }
 
-    layer = [mLayers objectAtIndex:selection];
-    mTitleLayer.string = [mTitles objectAtIndex:selection];
+    layer = [mLayers objectAtIndex:self.selection];
+    mTitleLayer.string = [mTitles objectAtIndex:self.selection];
     mTitleLayer.frame = CGRectMake(0, 0, [self frame].size.width, 25);
     mTitleLayer.zPosition = 100;
     CGPoint position = 
@@ -192,7 +206,7 @@ CGFloat aFromPosition(CGFloat t)
                     ([self frame].size.height / 2) - layer.bounds.size.height / 4.5);
     mTitleLayer.position = position;
 
-    mSubtitleLayer.string = [mSubtitles objectAtIndex:selection];
+    mSubtitleLayer.string = [mSubtitles objectAtIndex:self.selection];
     mSubtitleLayer.frame = CGRectMake(0, 0, [self frame].size.width, 25);
     mSubtitleLayer.zPosition = 100;
     position.y -= 25;
@@ -359,6 +373,16 @@ CGFloat aFromPosition(CGFloat t)
     [self reloadData];
 }
 
+- (id) delegate
+{
+    return mDelegate;
+}
+
+- (void) setDelegate:(id<JKImageFlowDelegate>)delegate
+{
+    mDelegate = delegate;
+}
+
 #pragma mark - NSResponder
 
 #define kLeftArrowKeyCode 123
@@ -379,14 +403,14 @@ CGFloat aFromPosition(CGFloat t)
 {
     switch ([theEvent keyCode]) {
         case kLeftArrowKeyCode:
-            if (selection > 0) {
-                selection--;
+            if (self.selection > 0) {
+                self.selection--;
                 [self redraw];
             }
             break;
         case kRightArrowKeyCode:
-            if (selection < [mLayers count] - 1) {
-                selection++;
+            if (self.selection < [mLayers count] - 1) {
+                self.selection++;
                 [self redraw];
             }
             break;
@@ -402,11 +426,11 @@ CGFloat aFromPosition(CGFloat t)
     // This works the way I want.  To mimic IKImageFlowView I would need to
     // soften (or slow down) the scroll at the end points.
     // momentumPhase may be useful here
-    if ([theEvent deltaX] < 0 && selection < [mLayers count] - 1) {
-        selection++;
+    if ([theEvent deltaX] < 0 && self.selection < [mLayers count] - 1) {
+        self.selection++;
         [self redraw];
-    } else if ([theEvent deltaX] > 0 && selection > 0) {
-        selection--;
+    } else if ([theEvent deltaX] > 0 && self.selection > 0) {
+        self.selection--;
         [self redraw];
     }
 }
@@ -418,11 +442,31 @@ CGFloat aFromPosition(CGFloat t)
     CGPoint p = [root convertPoint:[self convertPointToLayer:point]
                            toLayer:layer];
     if ([layer containsPoint:p]) {
-        selection = index;
-        [self redraw];
         return YES;
     }
     return NO;
+}
+
+- (int)selectionFromPoint:(NSPoint)point
+{
+    int index;
+    
+    // Need to consider the front most cells first.  However, the cells to the
+    // left and the right of the selection don't overlap so it works to consider
+    // the cells to the right starting with the selection and then go back to 
+    // the cells on the left starting with the cell closest to the selection.
+    for (index = self.selection; index < [mLayers count]; index++) {
+        if ([self checkPoint:point inLayerWithIndex:index]) {
+            
+            return index;
+        }
+    }
+    for (index = self.selection - 1; index >= 0; index--) {
+        if ([self checkPoint:point inLayerWithIndex:index]) {
+            return index;
+        }
+    }
+    return -1;
 }
 
 - (void)mouseDown:(NSEvent *)theEvent
@@ -431,19 +475,34 @@ CGFloat aFromPosition(CGFloat t)
     
     NSPoint viewPoint = [self convertPoint:[theEvent locationInWindow]
                                   fromView:nil];
-    
-    // Need to consider the front most cells first.  However, the cells to the
-    // left and the right of the selection don't overlap so it works to consider
-    // the cells to the right starting with the selection and then go back to 
-    // the cells on the left starting with the cell closest to the selection.
-    for (index = selection; index < [mLayers count]; index++) {
-        if ([self checkPoint:viewPoint inLayerWithIndex:index]) {
-            return;
-        }
+
+    index = [self selectionFromPoint:viewPoint];
+    if (index == -1)
+        return;
+        
+    self.selection = index;
+    [self redraw];
+        
+    if ([mDelegate respondsToSelector:@selector(imageFlow:cellWasDoubleClickedAtIndex:)] &&
+        [theEvent clickCount] == 2) {
+        [mDelegate imageFlow: self cellWasDoubleClickedAtIndex:index];
     }
-    for (index = selection - 1; index >= 0; index--) {
-        if ([self checkPoint:viewPoint inLayerWithIndex:index]) {
-            return;
+}
+
+- (void)rightMouseDown:(NSEvent *)theEvent
+{
+    NSPoint viewPoint = [self convertPoint:[theEvent locationInWindow]
+                                  fromView:nil];
+    int index = [self selectionFromPoint:viewPoint];
+    if (index == -1) {
+        if ([mDelegate respondsToSelector:
+             @selector(imageFlow:backgroundWasRightClickedWithEvent:)]) {
+            [mDelegate imageFlow:self backgroundWasRightClickedWithEvent:theEvent];
+        }
+    } else {
+        if ([mDelegate respondsToSelector:
+             @selector(imageFlow:cellWasRightClickedAtIndex:withEvent:)]) {
+            [mDelegate imageFlow:self cellWasRightClickedAtIndex:index withEvent:theEvent];
         }
     }
 }

@@ -38,10 +38,12 @@
 #import <Quartz/Quartz.h>
 
 #import "JKImageFlowDataSource.h"
+#import "JKImageFlowDelegate.h"
 
 @interface JKImageFlowView : NSView {
-    int selection;
+    int mSelection;
     id dataSource;
+    id <JKImageFlowDelegate> mDelegate;
     NSArray *mLayers;
     CATextLayer *mTitleLayer;
     CATextLayer *mSubtitleLayer;
@@ -49,9 +51,11 @@
     NSArray *mSubtitles;
 }
 
+@property int selection;
+
 - (id)initWithFrame:(NSRect)frameRect;
 - (void)reloadData;
 - (void)setFrame:(NSRect)frameRect;
 @property (retain) id <JKImageFlowDataSource> dataSource;
-
+@property (retain) id <JKImageFlowDelegate> delegate;
 @end
