@@ -77,6 +77,11 @@
     return [filePath lastPathComponent];
 }
 
+- (NSString *) imageSubtitle
+{
+    return [NSString stringWithString:@"A Picture"];
+}
+
 - (BOOL) isSelectable
 {
     return YES;
