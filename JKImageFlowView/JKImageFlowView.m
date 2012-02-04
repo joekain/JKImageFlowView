@@ -139,10 +139,22 @@ CGFloat aFromPosition(CGFloat t)
     [self drawCellWithImage:image withContext:theContext inLayer:theLayer];
 }
 
+- (CATransform3D) rootTransform
+{
+    // Scale vs. a reference width of 300
+    float factor = ([self frame].size.width / 2) / 300;
+    CATransform3D transform = CATransform3DMakeScale(factor, factor, factor);
+    transform.m34 = 1 / -400.0;
+    
+    return transform;
+}
+
 - (void) redraw
 {
     int index;
     
+    [self layer].sublayerTransform = [self rootTransform];
+
     for (index = 0; index < [mLayers count]; index++) {
         float t = (index - selection) / (float)[mLayers count];
         float x = xFromPosition(t);
@@ -160,11 +172,7 @@ CGFloat aFromPosition(CGFloat t)
         t3D = CATransform3DTranslate(t3D, -layer.bounds.size.width / 2, -2 * layer.bounds.size.height / 3.0, 0);
         t3D = CATransform3DTranslate(t3D, x * 300, 0, z * 300);
         t3D = CATransform3DRotate(t3D, -yRot,  0, 1, 0);
-        
-        // Scale the cells with respect to the width of the view.  Use 600
-        // and an arbitrary reference width.
-        float s = [self frame].size.width / 600;
-        t3D = CATransform3DScale(t3D, 0.5 * s, 0.5 * s, 1);
+        t3D = CATransform3DScale(t3D, 0.5, 0.5, 1);
         layer.transform = t3D;
         
         // Darken the sublayer
@@ -237,8 +245,7 @@ CGFloat aFromPosition(CGFloat t)
     rootLayer.backgroundColor = black;
     CGColorRelease(black);
     [rootLayer setFrame:NSRectToCGRect([self frame])];
-    CATransform3D sublayerTransform = CATransform3DIdentity;
-    sublayerTransform.m34 = 1 / -400.0;
+    CATransform3D sublayerTransform = [self rootTransform];    
     rootLayer.sublayerTransform = sublayerTransform;
 
     int index;
