@@ -152,6 +152,9 @@ CGFloat aFromPosition(CGFloat t)
 - (void) redraw
 {
     int index;
+
+    // Redraw as a single transaction
+    [CATransaction begin];
     
     [self layer].sublayerTransform = [self rootTransform];
 
@@ -178,7 +181,9 @@ CGFloat aFromPosition(CGFloat t)
         // Darken the sublayer
         layer = [layer.sublayers objectAtIndex:0];
         layer.opacity = 1 - a;
-    } 
+    }
+
+    [CATransaction commit];
 }
 
 #pragma mark - NSView methods
