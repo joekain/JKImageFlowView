@@ -40,18 +40,8 @@
 NSString * const JKImageBrowserPathRepresentationType = @"JKImageBrowserPathRepresentationType";
 NSString * const JKImageBrowserNSURLRepresentationType = @"JKImageBrowserNSURLRepresentationType";
 NSString * const JKImageBrowserNSImageRepresentationType = @"JKImageBrowserNSImageRepresentationType";
-NSString * const JKImageBrowserCGImageRepresentationType = @"JKImageBrowserCGImageRepresentationType";
-NSString * const JKImageBrowserCGImageSourceRepresentationType = @"JKImageBrowserCGImageSourceRepresentationType";
 NSString * const JKImageBrowserNSDataRepresentationType = @"JKImageBrowserNSDataRepresentationType";
 NSString * const JKImageBrowserNSBitmapImageRepresentationType = @"JKImageBrowserNSBitmapImageRepresentationType";
-NSString * const JKImageBrowserQTMovieRepresentationType = @"JKImageBrowserQTMovieRepresentationType";
-NSString * const JKImageBrowserQTMoviePathRepresentationType = @"JKImageBrowserQTMoviePathRepresentationType";
-NSString * const JKImageBrowserQCCompositionRepresentationType = @"JKImageBrowserQCCompositionRepresentationType";
-NSString * const JKImageBrowserQCCompositionPathRepresentationType = @"JKImageBrowserQCCompositionPathRepresentationType";
-NSString * const JKImageBrowserQuickLookPathRepresentationType = @"JKImageBrowserQuickLookPathRepresentationType";
-NSString * const JKImageBrowserIconRefPathRepresentationType = @"JKImageBrowserIconRefPathRepresentationType";
-NSString * const JKImageBrowserIconRefRepresentationType = @"JKImageBrowserIconRefRepresentationType";
-NSString * const JKImageBrowserPDFPageRepresentationType = @"JKImageBrowserPDFPageRepresentationType";
 
 // JKImageFlowDataSource informal protocol
 @interface NSObject (JKImageFlowDataSource)
@@ -242,22 +232,10 @@ CGFloat aFromPosition(CGFloat t)
         nsImage = [[NSImage alloc] initWithContentsOfURL:[item imageRepresentation]];
     } else if ([type isEqualToString:JKImageBrowserNSImageRepresentationType]) {
         nsImage = [item imageRepresentation];
-    } else if ([type isEqualToString:JKImageBrowserCGImageRepresentationType]) {
-        return (__bridge CGImageRef)[item imageRepresentation];
-    } else if ([type isEqualToString:JKImageBrowserCGImageSourceRepresentationType]) {
-        /* CGImageSourceRef */
     } else if ([type isEqualToString:JKImageBrowserNSDataRepresentationType]) {
         nsImage = [[NSImage alloc] initWithData:[item imageRepresentation]];
     } else if ([type isEqualToString:JKImageBrowserNSBitmapImageRepresentationType]) {
         return [[item imageRepresentation] CGImage];
-    } else if ([type isEqualToString:JKImageBrowserQTMovieRepresentationType]) {
-    } else if ([type isEqualToString:JKImageBrowserQTMoviePathRepresentationType]) {
-    } else if ([type isEqualToString:JKImageBrowserQCCompositionRepresentationType]) {
-    } else if ([type isEqualToString:JKImageBrowserQCCompositionPathRepresentationType]) {
-    } else if ([type isEqualToString:JKImageBrowserQuickLookPathRepresentationType]) {
-    } else if ([type isEqualToString:JKImageBrowserIconRefPathRepresentationType]) {
-    } else if ([type isEqualToString:JKImageBrowserIconRefRepresentationType]) {
-    } else if ([type isEqualToString:JKImageBrowserPDFPageRepresentationType]) {
     }
 
     if (nsImage) {
