@@ -50,18 +50,8 @@
         JKImageBrowserPathRepresentationType,
         JKImageBrowserNSURLRepresentationType,
         JKImageBrowserNSImageRepresentationType,
-        //JKImageBrowserCGImageRepresentationType,
-        //JKImageBrowserCGImageSourceRepresentationType,
         JKImageBrowserNSDataRepresentationType,
         JKImageBrowserNSBitmapImageRepresentationType,
-        //JKImageBrowserQTMovieRepresentationType,
-        //JKImageBrowserQTMoviePathRepresentationType,
-        //JKImageBrowserQCCompositionRepresentationType,
-        //JKImageBrowserQCCompositionPathRepresentationType,
-        //JKImageBrowserQuickLookPathRepresentationType,
-        //JKImageBrowserIconRefPathRepresentationType,
-        //JKImageBrowserIconRefRepresentationType,
-        //JKImageBrowserPDFPageRepresentationType,
     };
     int numTypes = sizeof(types) / sizeof(NSString *);
     int index;

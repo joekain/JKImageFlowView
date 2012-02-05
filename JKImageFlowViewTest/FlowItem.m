@@ -36,14 +36,6 @@
                                       aPath]];
         } else if ([type isEqualToString:JKImageBrowserNSImageRepresentationType]) {
             representation = [[NSImage alloc] initByReferencingFile:aPath];
-        } else if ([type isEqualToString:JKImageBrowserCGImageRepresentationType]) {
-            /* XXX How do I store a CGImage in an id? */
-            //NSImage *nsImage = [[NSImage alloc] initByReferencingFile:aPath];
-            //representation = [nsImage CGImageForProposedRect:nil
-            //                                         context:[NSGraphicsContext currentContext]
-            //                                           hints:nil];
-        } else if ([type isEqualToString:JKImageBrowserCGImageSourceRepresentationType]) {
-            /* CGImageSourceRef */
         } else if ([type isEqualToString:JKImageBrowserNSDataRepresentationType]) {
             representation = [NSData dataWithContentsOfFile:aPath];
         } else if ([type isEqualToString:JKImageBrowserNSBitmapImageRepresentationType]) {
