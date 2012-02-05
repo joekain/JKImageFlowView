@@ -18,7 +18,6 @@
 		9C49560F14CBDDB5005597F0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C49560E14CBDDB5005597F0 /* AppDelegate.m */; };
 		9C49561214CBDDB5005597F0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C49561014CBDDB5005597F0 /* MainMenu.xib */; };
 		9C49561614CBDDBD005597F0 /* JKImageFlowView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C4955DE14CBDD0D005597F0 /* JKImageFlowView.framework */; };
-		9C49561814CBE0F5005597F0 /* JKImageFlowView.qtz in Resources */ = {isa = PBXBuildFile; fileRef = 9C49561714CBE0F5005597F0 /* JKImageFlowView.qtz */; };
 		9C6784A914DA3BAA008209F8 /* FlowItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6784A814DA3BAA008209F8 /* FlowItem.m */; };
 		9C6784AC14DA3C34008209F8 /* JKImageFlowItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C6784AB14DA3C34008209F8 /* JKImageFlowItem.h */; };
 		9C6784AF14DA4313008209F8 /* JKImageFlowDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C6784AE14DA4313008209F8 /* JKImageFlowDataSource.h */; };
@@ -68,7 +67,6 @@
 		9C49560D14CBDDB5005597F0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9C49560E14CBDDB5005597F0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9C49561114CBDDB5005597F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		9C49561714CBE0F5005597F0 /* JKImageFlowView.qtz */ = {isa = PBXFileReference; lastKnownFileType = "video.quartz-composer"; path = JKImageFlowView.qtz; sourceTree = SOURCE_ROOT; };
 		9C6784A714DA3BAA008209F8 /* FlowItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowItem.h; sourceTree = "<group>"; };
 		9C6784A814DA3BAA008209F8 /* FlowItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowItem.m; sourceTree = "<group>"; };
 		9C6784AB14DA3C34008209F8 /* JKImageFlowItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKImageFlowItem.h; sourceTree = "<group>"; };
@@ -163,7 +161,6 @@
 		9C4955E814CBDD0D005597F0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9C49561714CBE0F5005597F0 /* JKImageFlowView.qtz */,
 				9C4955E914CBDD0D005597F0 /* JKImageFlowView-Info.plist */,
 				9C4955EA14CBDD0D005597F0 /* InfoPlist.strings */,
 				9C4955ED14CBDD0D005597F0 /* JKImageFlowView-Prefix.pch */,
@@ -312,7 +309,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C4955EC14CBDD0D005597F0 /* InfoPlist.strings in Resources */,
-				9C49561814CBE0F5005597F0 /* JKImageFlowView.qtz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
