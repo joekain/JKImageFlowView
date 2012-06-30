@@ -320,7 +320,7 @@ CGFloat aFromPosition(CGFloat t)
     mTitleLayer.frame = CGRectMake(0, 0, [self frame].size.width, 25);
     mTitleLayer.string = [titles objectAtIndex:0];
     mTitleLayer.fontSize = 12.0;
-    mTitleLayer.font = @"Menlo";
+    mTitleLayer.font = (void *)@"Menlo";
     mTitleLayer.alignmentMode = kCAAlignmentCenter;
     [rootLayer addSublayer:mTitleLayer];
     
@@ -329,7 +329,7 @@ CGFloat aFromPosition(CGFloat t)
     mSubtitleLayer.frame = CGRectMake(0, 0, [self frame].size.width, 25);
     mSubtitleLayer.string = [subtitles objectAtIndex:0];
     mSubtitleLayer.fontSize = 12.0;
-    mSubtitleLayer.font = @"Menlo";
+    mSubtitleLayer.font = (void *)@"Menlo";
     mSubtitleLayer.alignmentMode = kCAAlignmentCenter;
     [rootLayer addSublayer:mSubtitleLayer];
     
