@@ -8,18 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@class JKImageFlowView;
 @protocol JKImageFlowDelegate <NSObject>
 
 @optional
 - (void) imageFlow:(JKImageFlowView *) aFlow
-         backgroundWasRightClickedWithEvent:(NSEvent *) event;
+         backgroundWasRightClickedWithEvent:(JKAEvent *) event;
 
 - (void) imageFlow:(JKImageFlowView *) aFlow
          cellWasDoubleClickedAtIndex:(NSUInteger) index; 
 
 - (void) imageFlow:(JKImageFlowView *) aFlow
          cellWasRightClickedAtIndex:(NSUInteger) index
-         withEvent:(NSEvent *) event;
+         withEvent:(JKAEvent *) event;
          
 - (void) imageFlowSelectionDidChange:(JKImageFlowView *) aFlow;
 @end

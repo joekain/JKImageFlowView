@@ -34,13 +34,32 @@
 //  as representing official policies, either expressed or implied, of
 //  Joseph Kain.
 
-#import <Foundation/Foundation.h>
+#ifdef __APPLE__
+#include "TargetConditionals.h"
+
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+#import <UIKit/UIImage.h>
+#import <QuartzCore/QuartzCore.h>
+#define JKAView UIView
+#define JKARect CGRect
+#define JKAEvent UIEvent
+#define JKAImage UIImage
+
+#elif TARGET_OS_MAC
 #import <Quartz/Quartz.h>
+#define JKAView NSView
+#define JKARect NSRect
+#define JKAEvent NSEvent
+#define JKAImage NSImage
 
-#import "JKImageFlowDataSource.h"
+#endif
+#endif
+
 #import "JKImageFlowDelegate.h"
+#import "JKImageFlowDataSource.h"
 
-@interface JKImageFlowView : NSView {
+@interface JKImageFlowView : JKAView {
     int mSelection;
     id dataSource;
     id <JKImageFlowDelegate> mDelegate;
@@ -53,9 +72,9 @@
 
 @property int selection;
 
-- (id)initWithFrame:(NSRect)frameRect;
+- (id)initWithFrame:(CGRect)frameRect;
 - (void)reloadData;
-- (void)setFrame:(NSRect)frameRect;
+- (void)setFrame:(CGRect)frameRect;
 @property (retain) id <JKImageFlowDataSource> dataSource;
 @property (retain) id <JKImageFlowDelegate> delegate;
 @end

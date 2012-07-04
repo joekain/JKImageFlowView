@@ -51,7 +51,7 @@ NSString * const JKImageBrowserNSBitmapImageRepresentationType = @"JKImageBrowse
 
 @implementation JKImageFlowView
 
-- (id)initWithFrame:(NSRect)frameRect
+- (id)initWithFrame:(JKARect)frameRect
 {
     self = [super initWithFrame:frameRect];
     if (self) {
@@ -206,7 +206,7 @@ CGFloat aFromPosition(CGFloat t)
 }
 
 #pragma mark - NSView methods
-- (void)setFrame:(NSRect)frameRect
+- (void)setFrame:(JKARect)frameRect
 {
     [super setFrame:frameRect];
     
@@ -221,31 +221,59 @@ CGFloat aFromPosition(CGFloat t)
     [CATransaction commit];
 }
 
-- (CGImageRef)imageFromItem:(NSObject <JKImageFlowItem> *)item
+#if TARGET_OS_IPHONE
+- (CGImageRef)newImageFromItem:(NSObject <JKImageFlowItem> *)item
 {
     NSString *type = [item imageRepresentationType];
-    NSImage *nsImage = nil;
-
+    UIImage *nsImage = nil;
+    
     if ([type isEqualToString:JKImageBrowserPathRepresentationType]) {
-        nsImage = [[NSImage alloc] initByReferencingFile:[item imageRepresentation]];
+        nsImage = [[UIImage alloc] initWithContentsOfFile:[item imageRepresentation]];
     } else if ([type isEqualToString:JKImageBrowserNSURLRepresentationType]) {
-        nsImage = [[NSImage alloc] initWithContentsOfURL:[item imageRepresentation]];
+        NSData *data = [NSData dataWithContentsOfURL:[item imageRepresentation]];
+        nsImage = [[UIImage alloc] initWithData:data];
     } else if ([type isEqualToString:JKImageBrowserNSImageRepresentationType]) {
         nsImage = [item imageRepresentation];
     } else if ([type isEqualToString:JKImageBrowserNSDataRepresentationType]) {
-        nsImage = [[NSImage alloc] initWithData:[item imageRepresentation]];
+        nsImage = [[UIImage alloc] initWithData:[item imageRepresentation]];
+    } else if ([type isEqualToString:JKImageBrowserNSBitmapImageRepresentationType]) {
+        return [[item imageRepresentation] CGImage];
+    }
+    
+    if (nsImage) {
+        return CGImageRetain(nsImage.CGImage);
+    } else {
+        return nil;
+    }
+}
+#elif TARGET_OS_MAC
+- (CGImageRef)newImageFromItem:(NSObject <JKImageFlowItem> *)item
+{
+    NSString *type = [item imageRepresentationType];
+    JKAImage *nsImage = nil;
+
+    if ([type isEqualToString:JKImageBrowserPathRepresentationType]) {
+        nsImage = [[JKAImage alloc] initByReferencingFile:[item imageRepresentation]];
+    } else if ([type isEqualToString:JKImageBrowserNSURLRepresentationType]) {
+        nsImage = [[JKAImage alloc] initWithContentsOfURL:[item imageRepresentation]];
+    } else if ([type isEqualToString:JKImageBrowserNSImageRepresentationType]) {
+        nsImage = [item imageRepresentation];
+    } else if ([type isEqualToString:JKImageBrowserNSDataRepresentationType]) {
+        nsImage = [[JKAImage alloc] initWithData:[item imageRepresentation]];
     } else if ([type isEqualToString:JKImageBrowserNSBitmapImageRepresentationType]) {
         return [[item imageRepresentation] CGImage];
     }
 
     if (nsImage) {
-        return [nsImage CGImageForProposedRect:nil
-                                       context:[NSGraphicsContext currentContext]
-                                         hints:nil];
+        CGImageRef cgImage = [nsImage CGImageForProposedRect:nil
+                                                     context:[NSGraphicsContext currentContext]
+                                                       hints:nil];
+        return CGImageRetain(cgImage);
     } else {
         return nil;
     }
 }
+#endif
 
 #pragma mark - Data Source
 - (void)reloadData
@@ -255,10 +283,19 @@ CGFloat aFromPosition(CGFloat t)
     NSMutableArray *subtitles = [[NSMutableArray alloc] init];
     
     CALayer *rootLayer = [CALayer layer];
-    CGColorRef black = CGColorCreateGenericRGB(0.0f, 0.0f, 0.0f, 1.0f);
+    const CGFloat blackArray[] = {0.0f, 0.0f, 0.0f, 1.0f};
+    const CGFloat whiteArray[] = {1.0f, 1.0f, 1.0f, 1.0f};
+    CGColorRef black = CGColorCreate(CGColorSpaceCreateDeviceRGB(),
+                                     blackArray);
+    CGColorRef white = CGColorCreate(CGColorSpaceCreateDeviceRGB(),
+                                     whiteArray);
     rootLayer.backgroundColor = black;
-    CGColorRelease(black);
+
+#if TARGET_OS_IPHONE
+    [rootLayer setFrame:[self frame]];
+#else
     [rootLayer setFrame:NSRectToCGRect([self frame])];
+#endif
     CATransform3D sublayerTransform = [self rootTransform];    
     rootLayer.sublayerTransform = sublayerTransform;
 
@@ -266,19 +303,20 @@ CGFloat aFromPosition(CGFloat t)
     for (index = 0; index < [dataSource numberOfItemsInImageFlow:self]; index++) {
         CALayer *layer;
         
-        CGImageRef image = [self imageFromItem:[dataSource imageFlow:self
-                                                         itemAtIndex:index]];
-        CGImageRetain(image);
+        CGImageRef image = [self newImageFromItem:[dataSource imageFlow:self
+                                                            itemAtIndex:index]];
         float aspect = (float)CGImageGetWidth(image) / CGImageGetHeight(image);
 
         layer = [CALayer layer];
         [layer setValue:[NSValue valueWithPointer:image] forKey:@"image"];
         layer.delegate = self;
+#if !TARGET_OS_IPHONE
         layer.layoutManager=[CAConstraintLayoutManager layoutManager];
+#endif
         CGRect rect = CGRectMake(0, 0, 300 * aspect, 300 * 2);
         layer.frame = rect;
 
-        layer.backgroundColor = CGColorCreateGenericRGB(1.0, 1.0, 1.0, 1.0);
+        layer.backgroundColor = white;
         layer.edgeAntialiasingMask = kCALayerBottomEdge | kCALayerTopEdge;
         [layer setNeedsDisplay];
         [top insertObject:layer atIndex:index];
@@ -288,7 +326,7 @@ CGFloat aFromPosition(CGFloat t)
         // sublayer will be adjusted to darken or lighten the image.
         CALayer *subLayer = [CALayer layer];
         subLayer.frame = rect;
-        subLayer.backgroundColor = CGColorCreateGenericRGB(0.0, 0.0, 0.0, 1.0);
+        subLayer.backgroundColor = black;
         subLayer.opacity = 0.0;
         [layer addSublayer:subLayer];
         
@@ -311,12 +349,17 @@ CGFloat aFromPosition(CGFloat t)
             }
         }
     }
+    CGColorRelease(black);
+    CGColorRelease(white);
+    
     mLayers = top;
     mTitles = titles;
     mSubtitles = subtitles;
     
     mTitleLayer = [CATextLayer layer];
+#if !TARGET_OS_IPHONE
     mTitleLayer.layoutManager = [CAConstraintLayoutManager layoutManager];
+#endif
     mTitleLayer.frame = CGRectMake(0, 0, [self frame].size.width, 25);
     mTitleLayer.string = [titles objectAtIndex:0];
     mTitleLayer.fontSize = 12.0;
@@ -325,7 +368,9 @@ CGFloat aFromPosition(CGFloat t)
     [rootLayer addSublayer:mTitleLayer];
     
     mSubtitleLayer = [CATextLayer layer];
+#if !TARGET_OS_IPHONE
     mSubtitleLayer.layoutManager = [CAConstraintLayoutManager layoutManager];
+#endif
     mSubtitleLayer.frame = CGRectMake(0, 0, [self frame].size.width, 25);
     mSubtitleLayer.string = [subtitles objectAtIndex:0];
     mSubtitleLayer.fontSize = 12.0;
@@ -334,9 +379,12 @@ CGFloat aFromPosition(CGFloat t)
     [rootLayer addSublayer:mSubtitleLayer];
     
     [self redraw];
-    
+#if TARGET_OS_IPHONE
+    [self.layer addSublayer:rootLayer];
+#else
     [self setLayer:rootLayer];
     [self setWantsLayer:YES];
+#endif
     [self setNeedsDisplayInRect:[self frame]];
 }
 
@@ -371,13 +419,25 @@ CGFloat aFromPosition(CGFloat t)
     return YES;
 }
 
+#if TARGET_OS_IPHONE
+- (void)handleTapGesture:(UIGestureRecognizer *)sender
+{
+    
+}
+
+- (void)handleSwipeGesture:(UIGestureRecognizer *)sender
+{
+    
+}
+
+#else
 - (BOOL)wantsScrollEventsForSwipeTrackingOnAxis:(NSEventGestureAxis)axis 
 {
     // Inform the underlying view that we want horizontal scroll gesture events
     return (axis == NSEventGestureAxisHorizontal) ? YES : NO;
 }
 
-- (void)keyDown:(NSEvent *)theEvent
+- (void)keyDown:(JKAEvent *)theEvent
 {
     switch ([theEvent keyCode]) {
         case kLeftArrowKeyCode:
@@ -399,7 +459,7 @@ CGFloat aFromPosition(CGFloat t)
     }
 }
 
-- (void)scrollWheel:(NSEvent *)theEvent 
+- (void)scrollWheel:(JKAEvent *)theEvent 
 {
     // This works the way I want.  To mimic IKImageFlowView I would need to
     // soften (or slow down) the scroll at the end points.
@@ -447,7 +507,7 @@ CGFloat aFromPosition(CGFloat t)
     return -1;
 }
 
-- (void)mouseDown:(NSEvent *)theEvent
+- (void)mouseDown:(JKAEvent *)theEvent
 {
     int index;
     
@@ -467,7 +527,7 @@ CGFloat aFromPosition(CGFloat t)
     }
 }
 
-- (void)rightMouseDown:(NSEvent *)theEvent
+- (void)rightMouseDown:(JKAEvent *)theEvent
 {
     NSPoint viewPoint = [self convertPoint:[theEvent locationInWindow]
                                   fromView:nil];
@@ -484,5 +544,6 @@ CGFloat aFromPosition(CGFloat t)
         }
     }
 }
+#endif
 
 @end
