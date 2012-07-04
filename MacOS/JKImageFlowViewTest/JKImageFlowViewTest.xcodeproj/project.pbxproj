@@ -1,0 +1,406 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9C50A34315A3E7BF00B23E67 /* JKImageFlowView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C50A34115A3E77C00B23E67 /* JKImageFlowView.framework */; };
+		9C50A35315A3E85700B23E67 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C50A34715A3E85700B23E67 /* 1.jpg */; };
+		9C50A35415A3E85700B23E67 /* 11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C50A34815A3E85700B23E67 /* 11.jpg */; };
+		9C50A35515A3E85700B23E67 /* 12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C50A34915A3E85700B23E67 /* 12.jpg */; };
+		9C50A35615A3E85700B23E67 /* 13.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C50A34A15A3E85700B23E67 /* 13.jpg */; };
+		9C50A35715A3E85700B23E67 /* 14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C50A34B15A3E85700B23E67 /* 14.jpg */; };
+		9C50A35815A3E85700B23E67 /* 15.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C50A34C15A3E85700B23E67 /* 15.jpg */; };
+		9C50A35915A3E85700B23E67 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C50A34D15A3E85700B23E67 /* 3.jpg */; };
+		9C50A35A15A3E85700B23E67 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C50A34E15A3E85700B23E67 /* 4.jpg */; };
+		9C50A35B15A3E85700B23E67 /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C50A34F15A3E85700B23E67 /* 5.jpg */; };
+		9C50A35C15A3E85700B23E67 /* 6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C50A35015A3E85700B23E67 /* 6.jpg */; };
+		9C50A35D15A3E85700B23E67 /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C50A35115A3E85700B23E67 /* 7.jpg */; };
+		9C50A35E15A3E85700B23E67 /* 9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9C50A35215A3E85700B23E67 /* 9.jpg */; };
+		9C57B42D15A3D64700DCC5D1 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C57B42C15A3D64700DCC5D1 /* Cocoa.framework */; };
+		9C57B43715A3D64700DCC5D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C57B43515A3D64700DCC5D1 /* InfoPlist.strings */; };
+		9C57B43D15A3D64700DCC5D1 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9C57B43B15A3D64700DCC5D1 /* Credits.rtf */; };
+		9C57B44F15A3E58500DCC5D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C57B44A15A3E58500DCC5D1 /* AppDelegate.m */; };
+		9C57B45015A3E58500DCC5D1 /* FlowItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C57B44C15A3E58500DCC5D1 /* FlowItem.m */; };
+		9C57B45115A3E58500DCC5D1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C57B44D15A3E58500DCC5D1 /* MainMenu.xib */; };
+		9C57B45515A3E59C00DCC5D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C57B45315A3E59C00DCC5D1 /* main.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9C50A34015A3E77C00B23E67 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9C50A33915A3E77B00B23E67 /* JKImageFlowView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9C57B3E915A3D23A00DCC5D1;
+			remoteInfo = JKImageFlowView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9C50A33915A3E77B00B23E67 /* JKImageFlowView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JKImageFlowView.xcodeproj; path = ../JKImageFlowView/JKImageFlowView.xcodeproj; sourceTree = "<group>"; };
+		9C50A34415A3E80C00B23E67 /* JKImageFlowViewTest-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "JKImageFlowViewTest-Info.plist"; sourceTree = "<group>"; };
+		9C50A34715A3E85700B23E67 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		9C50A34815A3E85700B23E67 /* 11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11.jpg; sourceTree = "<group>"; };
+		9C50A34915A3E85700B23E67 /* 12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 12.jpg; sourceTree = "<group>"; };
+		9C50A34A15A3E85700B23E67 /* 13.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 13.jpg; sourceTree = "<group>"; };
+		9C50A34B15A3E85700B23E67 /* 14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 14.jpg; sourceTree = "<group>"; };
+		9C50A34C15A3E85700B23E67 /* 15.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 15.jpg; sourceTree = "<group>"; };
+		9C50A34D15A3E85700B23E67 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		9C50A34E15A3E85700B23E67 /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
+		9C50A34F15A3E85700B23E67 /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpg; sourceTree = "<group>"; };
+		9C50A35015A3E85700B23E67 /* 6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 6.jpg; sourceTree = "<group>"; };
+		9C50A35115A3E85700B23E67 /* 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.jpg; sourceTree = "<group>"; };
+		9C50A35215A3E85700B23E67 /* 9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9.jpg; sourceTree = "<group>"; };
+		9C57B42815A3D64700DCC5D1 /* JKImageFlowViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKImageFlowViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C57B42C15A3D64700DCC5D1 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		9C57B42F15A3D64700DCC5D1 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		9C57B43015A3D64700DCC5D1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9C57B43115A3D64700DCC5D1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9C57B43615A3D64700DCC5D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C57B43A15A3D64700DCC5D1 /* JKImageFlowViewTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JKImageFlowViewTest-Prefix.pch"; sourceTree = "<group>"; };
+		9C57B43C15A3D64700DCC5D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		9C57B44915A3E58500DCC5D1 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		9C57B44A15A3E58500DCC5D1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		9C57B44B15A3E58500DCC5D1 /* FlowItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowItem.h; sourceTree = SOURCE_ROOT; };
+		9C57B44C15A3E58500DCC5D1 /* FlowItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowItem.m; sourceTree = SOURCE_ROOT; };
+		9C57B44E15A3E58500DCC5D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		9C57B45315A3E59C00DCC5D1 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9C57B42515A3D64700DCC5D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C50A34315A3E7BF00B23E67 /* JKImageFlowView.framework in Frameworks */,
+				9C57B42D15A3D64700DCC5D1 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9C50A33A15A3E77B00B23E67 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9C50A34115A3E77C00B23E67 /* JKImageFlowView.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9C50A34615A3E85700B23E67 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				9C50A34715A3E85700B23E67 /* 1.jpg */,
+				9C50A34815A3E85700B23E67 /* 11.jpg */,
+				9C50A34915A3E85700B23E67 /* 12.jpg */,
+				9C50A34A15A3E85700B23E67 /* 13.jpg */,
+				9C50A34B15A3E85700B23E67 /* 14.jpg */,
+				9C50A34C15A3E85700B23E67 /* 15.jpg */,
+				9C50A34D15A3E85700B23E67 /* 3.jpg */,
+				9C50A34E15A3E85700B23E67 /* 4.jpg */,
+				9C50A34F15A3E85700B23E67 /* 5.jpg */,
+				9C50A35015A3E85700B23E67 /* 6.jpg */,
+				9C50A35115A3E85700B23E67 /* 7.jpg */,
+				9C50A35215A3E85700B23E67 /* 9.jpg */,
+			);
+			name = images;
+			path = ../../../images;
+			sourceTree = "<group>";
+		};
+		9C57B41D15A3D64700DCC5D1 = {
+			isa = PBXGroup;
+			children = (
+				9C57B43215A3D64700DCC5D1 /* JKImageFlowViewTest */,
+				9C57B42B15A3D64700DCC5D1 /* Frameworks */,
+				9C57B42915A3D64700DCC5D1 /* Products */,
+				9C50A33915A3E77B00B23E67 /* JKImageFlowView.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		9C57B42915A3D64700DCC5D1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9C57B42815A3D64700DCC5D1 /* JKImageFlowViewTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9C57B42B15A3D64700DCC5D1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C57B42C15A3D64700DCC5D1 /* Cocoa.framework */,
+				9C57B42E15A3D64700DCC5D1 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9C57B42E15A3D64700DCC5D1 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C57B42F15A3D64700DCC5D1 /* AppKit.framework */,
+				9C57B43015A3D64700DCC5D1 /* CoreData.framework */,
+				9C57B43115A3D64700DCC5D1 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		9C57B43215A3D64700DCC5D1 /* JKImageFlowViewTest */ = {
+			isa = PBXGroup;
+			children = (
+				9C57B44915A3E58500DCC5D1 /* AppDelegate.h */,
+				9C57B44A15A3E58500DCC5D1 /* AppDelegate.m */,
+				9C57B44B15A3E58500DCC5D1 /* FlowItem.h */,
+				9C57B44C15A3E58500DCC5D1 /* FlowItem.m */,
+				9C57B44D15A3E58500DCC5D1 /* MainMenu.xib */,
+				9C57B43315A3D64700DCC5D1 /* Supporting Files */,
+			);
+			path = JKImageFlowViewTest;
+			sourceTree = "<group>";
+		};
+		9C57B43315A3D64700DCC5D1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C50A34615A3E85700B23E67 /* images */,
+				9C50A34415A3E80C00B23E67 /* JKImageFlowViewTest-Info.plist */,
+				9C57B45315A3E59C00DCC5D1 /* main.m */,
+				9C57B43515A3D64700DCC5D1 /* InfoPlist.strings */,
+				9C57B43A15A3D64700DCC5D1 /* JKImageFlowViewTest-Prefix.pch */,
+				9C57B43B15A3D64700DCC5D1 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9C57B42715A3D64700DCC5D1 /* JKImageFlowViewTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C57B44615A3D64700DCC5D1 /* Build configuration list for PBXNativeTarget "JKImageFlowViewTest" */;
+			buildPhases = (
+				9C57B42415A3D64700DCC5D1 /* Sources */,
+				9C57B42515A3D64700DCC5D1 /* Frameworks */,
+				9C57B42615A3D64700DCC5D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JKImageFlowViewTest;
+			productName = JKImageFlowViewTest;
+			productReference = 9C57B42815A3D64700DCC5D1 /* JKImageFlowViewTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9C57B41F15A3D64700DCC5D1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Joseph Kain";
+			};
+			buildConfigurationList = 9C57B42215A3D64700DCC5D1 /* Build configuration list for PBXProject "JKImageFlowViewTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9C57B41D15A3D64700DCC5D1;
+			productRefGroup = 9C57B42915A3D64700DCC5D1 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9C50A33A15A3E77B00B23E67 /* Products */;
+					ProjectRef = 9C50A33915A3E77B00B23E67 /* JKImageFlowView.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				9C57B42715A3D64700DCC5D1 /* JKImageFlowViewTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9C50A34115A3E77C00B23E67 /* JKImageFlowView.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = JKImageFlowView.framework;
+			remoteRef = 9C50A34015A3E77C00B23E67 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9C57B42615A3D64700DCC5D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C57B43715A3D64700DCC5D1 /* InfoPlist.strings in Resources */,
+				9C57B43D15A3D64700DCC5D1 /* Credits.rtf in Resources */,
+				9C57B45115A3E58500DCC5D1 /* MainMenu.xib in Resources */,
+				9C50A35315A3E85700B23E67 /* 1.jpg in Resources */,
+				9C50A35415A3E85700B23E67 /* 11.jpg in Resources */,
+				9C50A35515A3E85700B23E67 /* 12.jpg in Resources */,
+				9C50A35615A3E85700B23E67 /* 13.jpg in Resources */,
+				9C50A35715A3E85700B23E67 /* 14.jpg in Resources */,
+				9C50A35815A3E85700B23E67 /* 15.jpg in Resources */,
+				9C50A35915A3E85700B23E67 /* 3.jpg in Resources */,
+				9C50A35A15A3E85700B23E67 /* 4.jpg in Resources */,
+				9C50A35B15A3E85700B23E67 /* 5.jpg in Resources */,
+				9C50A35C15A3E85700B23E67 /* 6.jpg in Resources */,
+				9C50A35D15A3E85700B23E67 /* 7.jpg in Resources */,
+				9C50A35E15A3E85700B23E67 /* 9.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9C57B42415A3D64700DCC5D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C57B44F15A3E58500DCC5D1 /* AppDelegate.m in Sources */,
+				9C57B45015A3E58500DCC5D1 /* FlowItem.m in Sources */,
+				9C57B45515A3E59C00DCC5D1 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9C57B43515A3D64700DCC5D1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57B43615A3D64700DCC5D1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9C57B43B15A3D64700DCC5D1 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57B43C15A3D64700DCC5D1 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		9C57B44D15A3E58500DCC5D1 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C57B44E15A3E58500DCC5D1 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9C57B44415A3D64700DCC5D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		9C57B44515A3D64700DCC5D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		9C57B44715A3D64700DCC5D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JKImageFlowViewTest/JKImageFlowViewTest-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					../../JKImageFlowView/,
+					../../JKImageFlowView/Protocols,
+				);
+				INFOPLIST_FILE = "JKImageFlowViewTest/JKImageFlowViewTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9C57B44815A3D64700DCC5D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JKImageFlowViewTest/JKImageFlowViewTest-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					../../JKImageFlowView/,
+					../../JKImageFlowView/Protocols,
+				);
+				INFOPLIST_FILE = "JKImageFlowViewTest/JKImageFlowViewTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9C57B42215A3D64700DCC5D1 /* Build configuration list for PBXProject "JKImageFlowViewTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C57B44415A3D64700DCC5D1 /* Debug */,
+				9C57B44515A3D64700DCC5D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9C57B44615A3D64700DCC5D1 /* Build configuration list for PBXNativeTarget "JKImageFlowViewTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C57B44715A3D64700DCC5D1 /* Debug */,
+				9C57B44815A3D64700DCC5D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9C57B41F15A3D64700DCC5D1 /* Project object */;
+}
