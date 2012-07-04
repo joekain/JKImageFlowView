@@ -1,0 +1,410 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9C50A3C415A3EF0100B23E67 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C50A3C315A3EF0100B23E67 /* UIKit.framework */; };
+		9C50A3C615A3EF0100B23E67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C50A3C515A3EF0100B23E67 /* Foundation.framework */; };
+		9C50A3C815A3EF0100B23E67 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C50A3C715A3EF0100B23E67 /* CoreGraphics.framework */; };
+		9C50A3CE15A3EF0100B23E67 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C50A3CC15A3EF0100B23E67 /* InfoPlist.strings */; };
+		9C50A3D015A3EF0100B23E67 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C50A3CF15A3EF0100B23E67 /* main.m */; };
+		9C50A3D415A3EF0100B23E67 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C50A3D315A3EF0100B23E67 /* AppDelegate.m */; };
+		9C50A3D715A3EF0100B23E67 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C50A3D615A3EF0100B23E67 /* ViewController.m */; };
+		9C50A3DA15A3EF0100B23E67 /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C50A3D815A3EF0100B23E67 /* ViewController_iPhone.xib */; };
+		9C50A3DD15A3EF0100B23E67 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C50A3DB15A3EF0100B23E67 /* ViewController_iPad.xib */; };
+		9CB844D615A3F02300E16356 /* libJKImageFlowView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C50A3EB15A3EFA100B23E67 /* libJKImageFlowView.a */; };
+		9CB844D815A3F02E00E16356 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CB844D715A3F02E00E16356 /* QuartzCore.framework */; };
+		9CB844DE15A4046A00E16356 /* FlowItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CB844DD15A4046A00E16356 /* FlowItem.m */; };
+		9CB844EC15A4079F00E16356 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CB844E015A4079F00E16356 /* 1.jpg */; };
+		9CB844ED15A4079F00E16356 /* 11.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CB844E115A4079F00E16356 /* 11.jpg */; };
+		9CB844EE15A4079F00E16356 /* 12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CB844E215A4079F00E16356 /* 12.jpg */; };
+		9CB844EF15A4079F00E16356 /* 13.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CB844E315A4079F00E16356 /* 13.jpg */; };
+		9CB844F015A4079F00E16356 /* 14.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CB844E415A4079F00E16356 /* 14.jpg */; };
+		9CB844F115A4079F00E16356 /* 15.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CB844E515A4079F00E16356 /* 15.jpg */; };
+		9CB844F215A4079F00E16356 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CB844E615A4079F00E16356 /* 3.jpg */; };
+		9CB844F315A4079F00E16356 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CB844E715A4079F00E16356 /* 4.jpg */; };
+		9CB844F415A4079F00E16356 /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CB844E815A4079F00E16356 /* 5.jpg */; };
+		9CB844F515A4079F00E16356 /* 6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CB844E915A4079F00E16356 /* 6.jpg */; };
+		9CB844F615A4079F00E16356 /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CB844EA15A4079F00E16356 /* 7.jpg */; };
+		9CB844F715A4079F00E16356 /* 9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9CB844EB15A4079F00E16356 /* 9.jpg */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9C50A3EA15A3EFA100B23E67 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9C50A3E315A3EFA000B23E67 /* JKImageFlowView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9C50A36A15A3EA8D00B23E67;
+			remoteInfo = JKImageFlowView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9C50A3BF15A3EF0100B23E67 /* JKImageFlowViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKImageFlowViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C50A3C315A3EF0100B23E67 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9C50A3C515A3EF0100B23E67 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9C50A3C715A3EF0100B23E67 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9C50A3CB15A3EF0100B23E67 /* JKImageFlowViewTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JKImageFlowViewTest-Info.plist"; sourceTree = "<group>"; };
+		9C50A3CD15A3EF0100B23E67 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C50A3CF15A3EF0100B23E67 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9C50A3D115A3EF0100B23E67 /* JKImageFlowViewTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JKImageFlowViewTest-Prefix.pch"; sourceTree = "<group>"; };
+		9C50A3D215A3EF0100B23E67 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9C50A3D315A3EF0100B23E67 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9C50A3D515A3EF0100B23E67 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		9C50A3D615A3EF0100B23E67 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9C50A3D915A3EF0100B23E67 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
+		9C50A3DC15A3EF0100B23E67 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		9C50A3E315A3EFA000B23E67 /* JKImageFlowView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = JKImageFlowView.xcodeproj; path = ../JKImageFlowView/JKImageFlowView.xcodeproj; sourceTree = "<group>"; };
+		9CB844D715A3F02E00E16356 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9CB844DC15A4046A00E16356 /* FlowItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowItem.h; sourceTree = "<group>"; };
+		9CB844DD15A4046A00E16356 /* FlowItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowItem.m; sourceTree = "<group>"; };
+		9CB844E015A4079F00E16356 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		9CB844E115A4079F00E16356 /* 11.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 11.jpg; sourceTree = "<group>"; };
+		9CB844E215A4079F00E16356 /* 12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 12.jpg; sourceTree = "<group>"; };
+		9CB844E315A4079F00E16356 /* 13.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 13.jpg; sourceTree = "<group>"; };
+		9CB844E415A4079F00E16356 /* 14.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 14.jpg; sourceTree = "<group>"; };
+		9CB844E515A4079F00E16356 /* 15.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 15.jpg; sourceTree = "<group>"; };
+		9CB844E615A4079F00E16356 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		9CB844E715A4079F00E16356 /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
+		9CB844E815A4079F00E16356 /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpg; sourceTree = "<group>"; };
+		9CB844E915A4079F00E16356 /* 6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 6.jpg; sourceTree = "<group>"; };
+		9CB844EA15A4079F00E16356 /* 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.jpg; sourceTree = "<group>"; };
+		9CB844EB15A4079F00E16356 /* 9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9.jpg; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9C50A3BC15A3EF0100B23E67 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9CB844D815A3F02E00E16356 /* QuartzCore.framework in Frameworks */,
+				9CB844D615A3F02300E16356 /* libJKImageFlowView.a in Frameworks */,
+				9C50A3C415A3EF0100B23E67 /* UIKit.framework in Frameworks */,
+				9C50A3C615A3EF0100B23E67 /* Foundation.framework in Frameworks */,
+				9C50A3C815A3EF0100B23E67 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9C50A3B415A3EF0000B23E67 = {
+			isa = PBXGroup;
+			children = (
+				9CB844D715A3F02E00E16356 /* QuartzCore.framework */,
+				9C50A3C915A3EF0100B23E67 /* JKImageFlowViewTest */,
+				9C50A3C215A3EF0100B23E67 /* Frameworks */,
+				9C50A3C015A3EF0100B23E67 /* Products */,
+				9C50A3E315A3EFA000B23E67 /* JKImageFlowView.xcodeproj */,
+			);
+			sourceTree = "<group>";
+		};
+		9C50A3C015A3EF0100B23E67 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9C50A3BF15A3EF0100B23E67 /* JKImageFlowViewTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9C50A3C215A3EF0100B23E67 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C50A3C315A3EF0100B23E67 /* UIKit.framework */,
+				9C50A3C515A3EF0100B23E67 /* Foundation.framework */,
+				9C50A3C715A3EF0100B23E67 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9C50A3C915A3EF0100B23E67 /* JKImageFlowViewTest */ = {
+			isa = PBXGroup;
+			children = (
+				9C50A3D215A3EF0100B23E67 /* AppDelegate.h */,
+				9C50A3D315A3EF0100B23E67 /* AppDelegate.m */,
+				9C50A3D515A3EF0100B23E67 /* ViewController.h */,
+				9C50A3D615A3EF0100B23E67 /* ViewController.m */,
+				9C50A3D815A3EF0100B23E67 /* ViewController_iPhone.xib */,
+				9C50A3DB15A3EF0100B23E67 /* ViewController_iPad.xib */,
+				9C50A3CA15A3EF0100B23E67 /* Supporting Files */,
+				9CB844DC15A4046A00E16356 /* FlowItem.h */,
+				9CB844DD15A4046A00E16356 /* FlowItem.m */,
+			);
+			path = JKImageFlowViewTest;
+			sourceTree = "<group>";
+		};
+		9C50A3CA15A3EF0100B23E67 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9CB844DF15A4079F00E16356 /* images */,
+				9C50A3CB15A3EF0100B23E67 /* JKImageFlowViewTest-Info.plist */,
+				9C50A3CC15A3EF0100B23E67 /* InfoPlist.strings */,
+				9C50A3CF15A3EF0100B23E67 /* main.m */,
+				9C50A3D115A3EF0100B23E67 /* JKImageFlowViewTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9C50A3E415A3EFA000B23E67 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9C50A3EB15A3EFA100B23E67 /* libJKImageFlowView.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9CB844DF15A4079F00E16356 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				9CB844E015A4079F00E16356 /* 1.jpg */,
+				9CB844E115A4079F00E16356 /* 11.jpg */,
+				9CB844E215A4079F00E16356 /* 12.jpg */,
+				9CB844E315A4079F00E16356 /* 13.jpg */,
+				9CB844E415A4079F00E16356 /* 14.jpg */,
+				9CB844E515A4079F00E16356 /* 15.jpg */,
+				9CB844E615A4079F00E16356 /* 3.jpg */,
+				9CB844E715A4079F00E16356 /* 4.jpg */,
+				9CB844E815A4079F00E16356 /* 5.jpg */,
+				9CB844E915A4079F00E16356 /* 6.jpg */,
+				9CB844EA15A4079F00E16356 /* 7.jpg */,
+				9CB844EB15A4079F00E16356 /* 9.jpg */,
+			);
+			name = images;
+			path = ../../../images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9C50A3BE15A3EF0100B23E67 /* JKImageFlowViewTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C50A3E015A3EF0100B23E67 /* Build configuration list for PBXNativeTarget "JKImageFlowViewTest" */;
+			buildPhases = (
+				9C50A3BB15A3EF0100B23E67 /* Sources */,
+				9C50A3BC15A3EF0100B23E67 /* Frameworks */,
+				9C50A3BD15A3EF0100B23E67 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JKImageFlowViewTest;
+			productName = JKImageFlowViewTest;
+			productReference = 9C50A3BF15A3EF0100B23E67 /* JKImageFlowViewTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9C50A3B615A3EF0000B23E67 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Joseph Kain";
+			};
+			buildConfigurationList = 9C50A3B915A3EF0000B23E67 /* Build configuration list for PBXProject "JKImageFlowViewTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9C50A3B415A3EF0000B23E67;
+			productRefGroup = 9C50A3C015A3EF0100B23E67 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9C50A3E415A3EFA000B23E67 /* Products */;
+					ProjectRef = 9C50A3E315A3EFA000B23E67 /* JKImageFlowView.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				9C50A3BE15A3EF0100B23E67 /* JKImageFlowViewTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		9C50A3EB15A3EFA100B23E67 /* libJKImageFlowView.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libJKImageFlowView.a;
+			remoteRef = 9C50A3EA15A3EFA100B23E67 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9C50A3BD15A3EF0100B23E67 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C50A3CE15A3EF0100B23E67 /* InfoPlist.strings in Resources */,
+				9C50A3DA15A3EF0100B23E67 /* ViewController_iPhone.xib in Resources */,
+				9C50A3DD15A3EF0100B23E67 /* ViewController_iPad.xib in Resources */,
+				9CB844EC15A4079F00E16356 /* 1.jpg in Resources */,
+				9CB844ED15A4079F00E16356 /* 11.jpg in Resources */,
+				9CB844EE15A4079F00E16356 /* 12.jpg in Resources */,
+				9CB844EF15A4079F00E16356 /* 13.jpg in Resources */,
+				9CB844F015A4079F00E16356 /* 14.jpg in Resources */,
+				9CB844F115A4079F00E16356 /* 15.jpg in Resources */,
+				9CB844F215A4079F00E16356 /* 3.jpg in Resources */,
+				9CB844F315A4079F00E16356 /* 4.jpg in Resources */,
+				9CB844F415A4079F00E16356 /* 5.jpg in Resources */,
+				9CB844F515A4079F00E16356 /* 6.jpg in Resources */,
+				9CB844F615A4079F00E16356 /* 7.jpg in Resources */,
+				9CB844F715A4079F00E16356 /* 9.jpg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9C50A3BB15A3EF0100B23E67 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C50A3D015A3EF0100B23E67 /* main.m in Sources */,
+				9C50A3D415A3EF0100B23E67 /* AppDelegate.m in Sources */,
+				9C50A3D715A3EF0100B23E67 /* ViewController.m in Sources */,
+				9CB844DE15A4046A00E16356 /* FlowItem.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9C50A3CC15A3EF0100B23E67 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C50A3CD15A3EF0100B23E67 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9C50A3D815A3EF0100B23E67 /* ViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C50A3D915A3EF0100B23E67 /* en */,
+			);
+			name = ViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		9C50A3DB15A3EF0100B23E67 /* ViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C50A3DC15A3EF0100B23E67 /* en */,
+			);
+			name = ViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9C50A3DE15A3EF0100B23E67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9C50A3DF15A3EF0100B23E67 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9C50A3E115A3EF0100B23E67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JKImageFlowViewTest/JKImageFlowViewTest-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					../../JKImageFlowView/,
+					../../JKImageFlowView/Protocols,
+				);
+				INFOPLIST_FILE = "JKImageFlowViewTest/JKImageFlowViewTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9C50A3E215A3EF0100B23E67 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JKImageFlowViewTest/JKImageFlowViewTest-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					../../JKImageFlowView/,
+					../../JKImageFlowView/Protocols,
+				);
+				INFOPLIST_FILE = "JKImageFlowViewTest/JKImageFlowViewTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9C50A3B915A3EF0000B23E67 /* Build configuration list for PBXProject "JKImageFlowViewTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C50A3DE15A3EF0100B23E67 /* Debug */,
+				9C50A3DF15A3EF0100B23E67 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9C50A3E015A3EF0100B23E67 /* Build configuration list for PBXNativeTarget "JKImageFlowViewTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C50A3E115A3EF0100B23E67 /* Debug */,
+				9C50A3E215A3EF0100B23E67 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9C50A3B615A3EF0000B23E67 /* Project object */;
+}

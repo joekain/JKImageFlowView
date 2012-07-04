@@ -159,6 +159,9 @@ CGFloat aFromPosition(CGFloat t)
     CALayer *layer;
     
     // Redraw as a single transaction
+#if TARGET_OS_IPHONE
+    [UIView beginAnimations:nil context:NULL];
+#endif
     [CATransaction begin];
     
     [self layer].sublayerTransform = [self rootTransform];
@@ -203,6 +206,9 @@ CGFloat aFromPosition(CGFloat t)
     mSubtitleLayer.position = position;
 
     [CATransaction commit];
+#if TARGET_OS_IPHONE
+    [UIView commitAnimations];
+#endif
 }
 
 #pragma mark - NSView methods
@@ -237,7 +243,7 @@ CGFloat aFromPosition(CGFloat t)
     } else if ([type isEqualToString:JKImageBrowserNSDataRepresentationType]) {
         nsImage = [[UIImage alloc] initWithData:[item imageRepresentation]];
     } else if ([type isEqualToString:JKImageBrowserNSBitmapImageRepresentationType]) {
-        return [[item imageRepresentation] CGImage];
+        return CGImageRetain([[item imageRepresentation] CGImage]);
     }
     
     if (nsImage) {
