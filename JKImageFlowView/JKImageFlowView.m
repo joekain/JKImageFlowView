@@ -145,10 +145,11 @@ CGFloat aFromPosition(CGFloat t)
 
 - (CATransform3D) rootTransform
 {
-    // Scale vs. a reference width of 300
-    float factor = ([self frame].size.width / 2) / 300;
+    // This formula is computes 1.0 for iPhone and 1.5 for iPad in JKImageFlowViewTest.
+    // Scale linearly between the values to handle any view size.
+    float factor = [self frame].size.width / (2 * 644.0) + (1.0 - (480.0 / (2 * 644)));
     CATransform3D transform = CATransform3DMakeScale(factor, factor, factor);
-    transform.m34 = 1 / -400.0;
+    transform.m34 =  1 / -400.0;
     
     return transform;
 }
@@ -157,6 +158,16 @@ CGFloat aFromPosition(CGFloat t)
 {
     int index;
     CALayer *layer;
+    float scale;
+    float xlateY;
+    
+#if TARGET_OS_IPHONE
+    scale = -1.0;
+    xlateY = -1.125;
+#else
+    scale = 1.0;
+    xlateY = -2;
+#endif
     
     // Redraw as a single transaction
 #if TARGET_OS_IPHONE
@@ -179,10 +190,11 @@ CGFloat aFromPosition(CGFloat t)
         
         t3D = CATransform3DIdentity;
         t3D = CATransform3DTranslate(t3D, [self frame].size.width / 2, [self frame].size.height / 2, 0);
-        t3D = CATransform3DTranslate(t3D, -layer.bounds.size.width / 2, -2 * layer.bounds.size.height / 3.0, 0);
+        
+        t3D = CATransform3DTranslate(t3D, -layer.bounds.size.width / 2, xlateY * layer.bounds.size.height / 3.0, 0);
         t3D = CATransform3DTranslate(t3D, x * 300, 0, z * 300);
         t3D = CATransform3DRotate(t3D, -yRot,  0, 1, 0);
-        t3D = CATransform3DScale(t3D, 0.5, 0.5, 1);
+        t3D = CATransform3DScale(t3D, 0.5, scale * 0.5, 1);
         layer.transform = t3D;
         
         // Darken the sublayer
@@ -196,13 +208,13 @@ CGFloat aFromPosition(CGFloat t)
     mTitleLayer.zPosition = 100;
     CGPoint position = 
         CGPointMake([self frame].size.width / 2.0,
-                    ([self frame].size.height / 2) - layer.bounds.size.height / 4.5);
+                    [self frame].size.height / 2.0 - scale * 50);
     mTitleLayer.position = position;
 
     mSubtitleLayer.string = [mSubtitles objectAtIndex:self.selection];
     mSubtitleLayer.frame = CGRectMake(0, 0, [self frame].size.width, 25);
     mSubtitleLayer.zPosition = 100;
-    position.y -= 25;
+    position.y -= scale * 25;
     mSubtitleLayer.position = position;
 
     [CATransaction commit];
