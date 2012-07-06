@@ -82,4 +82,17 @@
     return [images objectAtIndex:index];
 }
 
+#pragma mark - JKImageFlowViewDelegate
+
+- (void) imageFlowSelectionDidChange:(JKImageFlowView *) aFlow;
+{
+    self.label.text = [NSString stringWithFormat:@"Selection changed to %d", self.flowView.selection];
+}
+
+- (void) imageFlow:(JKImageFlowView *) aFlow
+cellWasDoubleClickedAtIndex:(NSUInteger) index
+{
+    self.label.text = [NSString stringWithFormat:@"Double clicked %d", index];
+}
+
 @end
