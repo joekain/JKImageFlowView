@@ -61,6 +61,7 @@
 
 @interface JKImageFlowView : JKAView {
     int mSelection;
+    float mAccumulatedPan;
     id dataSource;
     id <JKImageFlowDelegate> mDelegate;
     NSArray *mLayers;

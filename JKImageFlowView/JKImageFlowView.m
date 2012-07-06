@@ -51,12 +51,46 @@ NSString * const JKImageBrowserNSBitmapImageRepresentationType = @"JKImageBrowse
 
 @implementation JKImageFlowView
 
+- (void)commonInit
+{
+    mSelection = 0;
+    mLayers = nil;
+    
+#if TARGET_OS_IPHONE
+    UITapGestureRecognizer *tap;
+    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture:)];
+    tap.numberOfTouchesRequired = 1;
+    tap.numberOfTapsRequired = 1;
+    [self addGestureRecognizer:tap];
+    
+    UITapGestureRecognizer *doubleTap;
+    doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleDoubleTapGesture:)];
+    doubleTap.numberOfTouchesRequired = 1;
+    doubleTap.numberOfTapsRequired = 2;
+    [self addGestureRecognizer:doubleTap];
+    
+    UIPanGestureRecognizer *pan;
+    pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+    pan.minimumNumberOfTouches = 1;
+    pan.maximumNumberOfTouches = 1;
+    [self addGestureRecognizer:pan];
+#endif
+}
+
 - (id)initWithFrame:(JKARect)frameRect
 {
     self = [super initWithFrame:frameRect];
     if (self) {
-        mSelection = 0;
-        mLayers = nil;
+        [self commonInit];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)encoder
+{
+    self = [super initWithCoder:encoder];
+    if (self) {
+        [self commonInit];
     }
     return self;
 }
@@ -438,14 +472,98 @@ CGFloat aFromPosition(CGFloat t)
 }
 
 #if TARGET_OS_IPHONE
-- (void)handleTapGesture:(UIGestureRecognizer *)sender
+- (Boolean)checkPoint:(CGPoint)pointInRoot inLayerWithIndex:(int)index
 {
-    
+    CALayer *root = [self layer];
+    CALayer *layer = [mLayers objectAtIndex:index];
+    CGPoint pointInLayer = [root convertPoint:pointInRoot toLayer:layer];
+    if ([layer containsPoint:pointInLayer]) {
+        return YES;
+    }
+    return NO;
 }
 
-- (void)handleSwipeGesture:(UIGestureRecognizer *)sender
+- (int)selectionFromPoint:(CGPoint)point
 {
+    int index;
     
+    // Need to consider the front most cells first.  However, the cells to the
+    // left and the right of the selection don't overlap so it works to consider
+    // the cells to the right starting with the selection and then go back to 
+    // the cells on the left starting with the cell closest to the selection.
+    for (index = self.selection; index < [mLayers count]; index++) {
+        if ([self checkPoint:point inLayerWithIndex:index]) {
+            
+            return index;
+        }
+    }
+    for (index = self.selection - 1; index >= 0; index--) {
+        if ([self checkPoint:point inLayerWithIndex:index]) {
+            return index;
+        }
+    }
+    return -1;
+}
+
+- (int)updateIndexFromTapGesture:(UIGestureRecognizer *)sender
+{
+    if (sender.state != UIGestureRecognizerStateEnded) {
+        return -1;
+    }
+
+    int index;
+    CGPoint viewPoint = [sender locationInView:self];    
+    index = [self selectionFromPoint:viewPoint];
+    
+    if (index != -1) {
+        self.selection = index;
+        [self redraw];
+    }
+    
+    return index;
+}
+
+- (void)handleTapGesture:(UIGestureRecognizer *)sender
+{    
+    [self updateIndexFromTapGesture:sender];
+}
+
+- (void)handleDoubleTapGesture:(UIGestureRecognizer *)sender
+{
+    int index = [self updateIndexFromTapGesture:sender];
+    if (index != -1) {
+        if ([mDelegate respondsToSelector:@selector(imageFlow:cellWasDoubleClickedAtIndex:)]) {
+            [mDelegate imageFlow: self cellWasDoubleClickedAtIndex:index];
+        }
+    }
+}
+
+- (void)handlePanGesture:(UIPanGestureRecognizer *)sender
+{
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        mAccumulatedPan = 0;
+    } else {
+        // This works the way I want.  To mimic IKImageFlowView I would need to
+        // soften (or slow down) the scroll at the end points.
+        CGPoint delta = [sender translationInView:self];
+        float pan = (delta.x - mAccumulatedPan) / self.frame.size.width;
+        
+        float threshold = 0.3 / [mLayers count];
+        
+        if (pan < -threshold) {
+            if (self.selection < [mLayers count] - 1) {
+                self.selection++;
+                [self redraw];
+            }
+            mAccumulatedPan = delta.x;
+        } else if (pan > threshold) {
+            if (self.selection > 0) {
+                self.selection--;
+                [self redraw];
+            }
+            mAccumulatedPan = delta.x;
+        }
+    }
 }
 
 #else
