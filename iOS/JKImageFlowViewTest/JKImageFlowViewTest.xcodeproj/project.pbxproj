@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9C31D42515A9FCC8009389E0 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9C31D42315A9FCC8009389E0 /* Credits.rtf */; };
 		9C50A3C415A3EF0100B23E67 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C50A3C315A3EF0100B23E67 /* UIKit.framework */; };
 		9C50A3C615A3EF0100B23E67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C50A3C515A3EF0100B23E67 /* Foundation.framework */; };
 		9C50A3C815A3EF0100B23E67 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C50A3C715A3EF0100B23E67 /* CoreGraphics.framework */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9C31D42415A9FCC8009389E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = ../../../MacOS/JKImageFlowViewTest/JKImageFlowViewTest/en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		9C50A3BF15A3EF0100B23E67 /* JKImageFlowViewTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKImageFlowViewTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C50A3C315A3EF0100B23E67 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9C50A3C515A3EF0100B23E67 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -140,6 +142,7 @@
 		9C50A3CA15A3EF0100B23E67 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9C31D42315A9FCC8009389E0 /* Credits.rtf */,
 				9CB844DF15A4079F00E16356 /* images */,
 				9C50A3CB15A3EF0100B23E67 /* JKImageFlowViewTest-Info.plist */,
 				9C50A3CC15A3EF0100B23E67 /* InfoPlist.strings */,
@@ -259,6 +262,7 @@
 				9CB844F515A4079F00E16356 /* 6.jpg in Resources */,
 				9CB844F615A4079F00E16356 /* 7.jpg in Resources */,
 				9CB844F715A4079F00E16356 /* 9.jpg in Resources */,
+				9C31D42515A9FCC8009389E0 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +283,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		9C31D42315A9FCC8009389E0 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C31D42415A9FCC8009389E0 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
 		9C50A3CC15A3EF0100B23E67 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
