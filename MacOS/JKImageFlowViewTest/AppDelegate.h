@@ -42,6 +42,5 @@
 
 // JKImageFlowDataSource Protocol (informal)
 - (NSUInteger)numberOfItemsInImageFlow:(id)aFlow;
-- (id)imageFlow:(id)aFlow itemAtIndex:(int)index;
-
+- (id)imageFlow:(JKImageFlowView *)aFlow itemAtIndex:(NSUInteger)index;
 @end

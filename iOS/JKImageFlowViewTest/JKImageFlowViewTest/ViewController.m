@@ -95,7 +95,7 @@
     return [images count];
 }
 
-- (id)imageFlow:(id)aFlow itemAtIndex:(int)index
+- (id)imageFlow:(id)aFlow itemAtIndex:(NSUInteger)index
 {
     return [images objectAtIndex:index];
 }

@@ -69,12 +69,14 @@
     [self.flowView setDelegate:self];
 }
 
+#pragma  mark - JKImageFlowDataSource
+
 - (NSUInteger)numberOfItemsInImageFlow:(id)aFlow
 {
     return [images count];
 }
 
-- (id)imageFlow:(id)aFlow itemAtIndex:(int)index
+- (id)imageFlow:(JKImageFlowView *)aFlow itemAtIndex:(NSUInteger)index
 {
     return [images objectAtIndex:index];
 }

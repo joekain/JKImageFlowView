@@ -34,12 +34,6 @@ NSString * const JKImageBrowserNSImageRepresentationType = @"JKImageBrowserNSIma
 NSString * const JKImageBrowserNSDataRepresentationType = @"JKImageBrowserNSDataRepresentationType";
 NSString * const JKImageBrowserNSBitmapImageRepresentationType = @"JKImageBrowserNSBitmapImageRepresentationType";
 
-// JKImageFlowDataSource informal protocol
-@interface NSObject (JKImageFlowDataSource)
-- (NSUInteger)numberOfItemsInImageFlow:(id)aFlow;
-- (id)imageFlow:(id)aFlow itemAtIndex:(int)index;
-@end
-
 @implementation JKImageFlowView
 
 - (void)commonInit

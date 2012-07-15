@@ -29,7 +29,7 @@
 @class JKImageFlowView;
 @protocol JKImageFlowDataSource <NSObject>
 
-- (id) imageBrowser:(JKImageFlowView *) aBrowser itemAtIndex:(NSUInteger)index;
-- (NSUInteger) numberOfItemsInImageBrowser:(JKImageFlowView *) aBrowser;
+- (id) imageFlow:(JKImageFlowView *) aFlow itemAtIndex:(NSUInteger)index;
+- (NSUInteger) numberOfItemsInImageFlow:(JKImageFlowView *) aBrowser;
 
 @end
